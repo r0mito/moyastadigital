@@ -16,7 +16,6 @@
       --panel: rgba(255, 255, 255, 0.045);
       --panel-strong: rgba(255, 255, 255, 0.07);
       --line: rgba(255, 255, 255, 0.08);
-      --line-soft: rgba(255, 255, 255, 0.05);
       --text: #f4f5f7;
       --muted: #a0a8b6;
       --muted-2: #7f8896;
@@ -95,13 +94,12 @@
 
     .topbar {
       display: grid;
-      grid-template-columns: minmax(0, 1fr) 140px;
+      grid-template-columns: 1fr;
       gap: 16px;
     }
 
     .brandbar,
-    .langbox,
-    .hero,
+    .hero-surface,
     .feature,
     .story,
     .sidebar,
@@ -178,45 +176,35 @@
       text-align: right;
     }
 
-    .langbox {
-      min-height: 82px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 14px;
-      font-size: 0.96rem;
-      font-weight: 600;
-      letter-spacing: 0.03em;
-    }
-
-    .langbox button {
-      color: var(--muted-2);
-      transition: color 0.25s ease, transform 0.25s ease;
-    }
-
-    .langbox button.active,
-    .langbox button:hover {
-      color: var(--text);
-      transform: translateY(-1px);
-    }
-
     .hero {
       position: relative;
-      min-height: 690px;
-      overflow: hidden;
+      min-height: 720px;
       padding: 0;
-      isolation: isolate;
-      border-radius: var(--radius-xl);
+      overflow: visible;
+      border: none;
+      background: transparent;
+      box-shadow: none;
     }
 
-    .hero::before {
+    .hero-surface {
+      position: relative;
+      min-height: 720px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.06);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      box-shadow:
+        0 28px 90px rgba(0,0,0,0.32),
+        inset 0 1px 0 rgba(255,255,255,0.03);
+      isolation: isolate;
+    }
+
+    .hero-surface::before {
       content: "";
       position: absolute;
       inset: 0;
       border-radius: inherit;
-      box-shadow:
-        inset 0 0 0 1px rgba(255,255,255,0.035),
-        inset 0 1px 0 rgba(255,255,255,0.03);
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.02);
       pointer-events: none;
       z-index: 5;
     }
@@ -224,64 +212,48 @@
     .hero-bg {
       position: absolute;
       inset: 0;
-      border-radius: inherit;
       background:
-        radial-gradient(circle at 14% 30%, rgba(98, 223, 255, 0.18), transparent 18%),
-        radial-gradient(circle at 78% 24%, rgba(91, 124, 255, 0.18), transparent 20%),
-        radial-gradient(circle at 42% 78%, rgba(103, 210, 255, 0.12), transparent 18%),
-        linear-gradient(125deg, #05101a 0%, #0b1b31 24%, #102b53 48%, #0c2140 68%, #07111e 100%);
-      transform: scale(1.01);
+        radial-gradient(circle at 18% 30%, rgba(76, 220, 255, 0.16), transparent 18%),
+        radial-gradient(circle at 72% 24%, rgba(98, 117, 255, 0.16), transparent 20%),
+        radial-gradient(circle at 42% 80%, rgba(87, 191, 255, 0.10), transparent 18%),
+        linear-gradient(135deg, #04101b 0%, #08192d 24%, #0a2345 50%, #081b35 74%, #040c16 100%);
+      transform: scale(1.02);
     }
 
     .hero-bg::before {
       content: "";
       position: absolute;
-      inset: -8%;
+      inset: 8%;
+      border-radius: 28px;
       background:
-        radial-gradient(ellipse at 20% 48%, rgba(144, 236, 255, 0.24), transparent 22%),
-        radial-gradient(ellipse at 60% 64%, rgba(38, 92, 255, 0.18), transparent 24%),
-        radial-gradient(ellipse at 85% 36%, rgba(153, 241, 255, 0.14), transparent 18%);
-      filter: blur(22px);
-      mix-blend-mode: screen;
-      animation: floatAura 15s ease-in-out infinite alternate;
-      opacity: 0.95;
+        radial-gradient(circle at 20% 35%, rgba(142, 242, 255, 0.09), transparent 22%),
+        radial-gradient(circle at 80% 28%, rgba(146, 164, 255, 0.08), transparent 20%),
+        radial-gradient(circle at 48% 78%, rgba(111, 211, 255, 0.06), transparent 18%);
+      filter: blur(26px);
+      opacity: 0.9;
     }
 
-    .hero-bg::after {
-      content: "";
+    .hero-mesh {
       position: absolute;
       inset: 0;
-      border-radius: inherit;
       background:
-        radial-gradient(circle at 50% 50%, rgba(255,255,255,0.04), transparent 48%);
-      opacity: 0.45;
-    }
-
-    .hero-noise {
-      position: absolute;
-      inset: 0;
-      border-radius: inherit;
-      opacity: 0.03;
-      background-image: radial-gradient(circle, #fff 0.7px, transparent 0.8px);
-      background-size: 12px 12px;
+        linear-gradient(115deg, transparent 0%, rgba(255,255,255,0.018) 50%, transparent 100%);
+      opacity: 0.35;
       mix-blend-mode: soft-light;
-      pointer-events: none;
     }
 
-    .hero-overlay {
+    .hero-vignette {
       position: absolute;
       inset: 0;
-      border-radius: inherit;
       background:
-        linear-gradient(180deg, rgba(0,0,0,0.06) 0%, rgba(0,0,0,0.1) 36%, rgba(0,0,0,0.32) 100%);
+        linear-gradient(180deg, rgba(0,0,0,0.04) 0%, rgba(0,0,0,0.08) 36%, rgba(0,0,0,0.26) 100%);
     }
 
     .hero-content {
       position: relative;
       z-index: 2;
-      height: 100%;
-      min-height: 690px;
-      padding: 34px;
+      min-height: 720px;
+      padding: 38px 42px 42px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -291,30 +263,29 @@
       display: flex;
       align-items: flex-start;
       justify-content: space-between;
-      gap: 18px;
+      gap: 20px;
     }
 
     .hero-kicker {
       display: inline-flex;
       align-items: center;
       gap: 10px;
-      padding: 10px 16px;
+      padding: 12px 18px;
       border-radius: 999px;
-      background: rgba(7, 10, 15, 0.34);
-      border: 1px solid rgba(255,255,255,0.06);
-      color: #dff7ff;
-      font-size: 0.92rem;
-      width: fit-content;
+      background: rgba(7, 10, 15, 0.22);
+      border: 1px solid rgba(255,255,255,0.07);
+      color: #e8f8ff;
+      font-size: 0.94rem;
       backdrop-filter: blur(10px);
-      box-shadow: inset 0 1px 0 rgba(255,255,255,0.04);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.03);
     }
 
     .hero-kicker-dot {
       width: 8px;
       height: 8px;
       border-radius: 50%;
-      background: linear-gradient(135deg, var(--accent), var(--accent-3));
-      box-shadow: 0 0 16px rgba(120, 215, 255, 0.42);
+      background: linear-gradient(135deg, #79d8ff, #c7f3ff);
+      box-shadow: 0 0 14px rgba(121,216,255,0.35);
       flex-shrink: 0;
     }
 
@@ -325,101 +296,98 @@
     }
 
     .hero-action {
-      min-width: 48px;
-      height: 48px;
-      padding: 0 18px;
+      min-width: 54px;
+      height: 54px;
+      padding: 0 22px;
       border-radius: 999px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      background: rgba(7, 10, 15, 0.3);
-      border: 1px solid rgba(255,255,255,0.06);
+      background: rgba(7, 10, 15, 0.18);
+      border: 1px solid rgba(255,255,255,0.07);
+      color: #f3f6fb;
+      font-weight: 500;
       backdrop-filter: blur(10px);
-      color: #eef4ff;
       transition: transform 0.25s ease, background 0.25s ease, border-color 0.25s ease;
-      box-shadow: inset 0 1px 0 rgba(255,255,255,0.035);
     }
 
     .hero-action:hover {
       transform: translateY(-1px);
-      background: rgba(18, 24, 35, 0.5);
-      border-color: rgba(255,255,255,0.1);
+      background: rgba(18, 24, 35, 0.34);
+      border-color: rgba(255,255,255,0.11);
+    }
+
+    .hero-action-icon {
+      min-width: 54px;
+      width: 54px;
+      padding: 0;
     }
 
     .hero-bottom {
       display: grid;
-      grid-template-columns: minmax(0, 1.45fr) minmax(340px, 0.74fr);
-      gap: 18px;
+      grid-template-columns: minmax(0, 1.5fr) minmax(340px, 420px);
+      gap: 30px;
       align-items: end;
     }
 
     .hero-copy {
-      max-width: 1020px;
+      max-width: 980px;
+      padding-right: 10px;
     }
 
     .hero-copy h1 {
-      font-size: clamp(3rem, 7vw, 6.2rem);
-      line-height: 0.96;
-      letter-spacing: -0.065em;
+      font-size: clamp(3.1rem, 7vw, 6.4rem);
+      line-height: 0.94;
+      letter-spacing: -0.07em;
       font-weight: 500;
-      max-width: 980px;
+      max-width: 900px;
       text-wrap: balance;
     }
 
     .hero-copy p {
-      margin-top: 24px;
-      font-size: 1.18rem;
-      color: rgba(244,245,247,0.84);
-      max-width: 760px;
+      margin-top: 26px;
+      font-size: 1.2rem;
       line-height: 1.55;
+      color: rgba(244,245,247,0.82);
+      max-width: 820px;
     }
 
     .hero-panel {
-      padding: 24px;
+      padding: 28px;
       border-radius: 28px;
       background:
-        linear-gradient(180deg, rgba(7, 10, 16, 0.42), rgba(9, 13, 20, 0.58));
-      border: 1px solid rgba(255,255,255,0.06);
-      backdrop-filter: blur(18px);
+        linear-gradient(180deg, rgba(7,10,16,0.30), rgba(8,12,18,0.46));
+      border: 1px solid rgba(255,255,255,0.07);
+      backdrop-filter: blur(16px);
       box-shadow:
-        0 20px 50px rgba(0,0,0,0.18),
-        inset 0 1px 0 rgba(255,255,255,0.03);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero-panel::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(135deg, rgba(120,215,255,0.03), transparent 42%);
-      pointer-events: none;
+        0 20px 50px rgba(0,0,0,0.16),
+        inset 0 1px 0 rgba(255,255,255,0.025);
     }
 
     .panel-label {
-      font-size: 0.9rem;
-      color: var(--muted);
-      margin-bottom: 12px;
+      font-size: 0.92rem;
+      color: rgba(255,255,255,0.62);
+      margin-bottom: 14px;
     }
 
     .panel-title {
-      font-size: 1.6rem;
+      font-size: 1.72rem;
       line-height: 1.08;
-      letter-spacing: -0.04em;
+      letter-spacing: -0.045em;
       font-weight: 500;
-      margin-bottom: 12px;
-      max-width: 520px;
+      max-width: 480px;
+      margin-bottom: 14px;
     }
 
     .panel-text {
-      color: #d0d6df;
-      font-size: 0.98rem;
-      line-height: 1.55;
-      max-width: 520px;
+      font-size: 1rem;
+      line-height: 1.58;
+      color: rgba(244,245,247,0.78);
+      max-width: 500px;
     }
 
     .panel-footer {
-      margin-top: 18px;
+      margin-top: 22px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -430,9 +398,9 @@
     .panel-badge {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      color: #eafcff;
-      font-size: 0.92rem;
+      gap: 9px;
+      font-size: 0.95rem;
+      color: #eefbff;
     }
 
     .panel-badge::before {
@@ -440,28 +408,28 @@
       width: 7px;
       height: 7px;
       border-radius: 50%;
-      background: linear-gradient(135deg, var(--accent), var(--accent-3));
-      box-shadow: 0 0 14px rgba(120,215,255,0.35);
+      background: linear-gradient(135deg, #79d8ff, #c7f3ff);
+      box-shadow: 0 0 12px rgba(121,216,255,0.28);
     }
 
     .pill {
-      min-width: 122px;
-      height: 50px;
-      padding: 0 20px;
+      min-width: 126px;
+      height: 52px;
+      padding: 0 22px;
       border-radius: 999px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.07);
+      background: rgba(255,255,255,0.055);
+      border: 1px solid rgba(255,255,255,0.08);
       font-weight: 600;
       transition: transform 0.25s ease, background 0.25s ease, border-color 0.25s ease;
     }
 
     .pill:hover {
       transform: translateY(-1px);
-      background: rgba(255,255,255,0.08);
-      border-color: rgba(255,255,255,0.1);
+      background: rgba(255,255,255,0.085);
+      border-color: rgba(255,255,255,0.12);
     }
 
     .grid-row {
@@ -697,15 +665,6 @@
       scroll-margin-top: 30px;
     }
 
-    @keyframes floatAura {
-      0% {
-        transform: translate3d(-1.5%, -1%, 0) scale(1);
-      }
-      100% {
-        transform: translate3d(1.8%, 1.4%, 0) scale(1.05);
-      }
-    }
-
     @media (max-width: 1280px) {
       .frame {
         grid-template-columns: 1fr;
@@ -723,7 +682,6 @@
     }
 
     @media (max-width: 980px) {
-      .topbar,
       .grid-row,
       .hero-bottom,
       .sections,
@@ -731,12 +689,18 @@
         grid-template-columns: 1fr;
       }
 
-      .hero {
+      .hero,
+      .hero-surface,
+      .hero-content {
         min-height: 620px;
       }
 
-      .hero-content {
-        min-height: 620px;
+      .hero-bottom {
+        gap: 22px;
+      }
+
+      .hero-copy h1 {
+        max-width: 100%;
       }
     }
 
@@ -746,8 +710,7 @@
       }
 
       .brandbar,
-      .langbox,
-      .hero,
+      .hero-surface,
       .feature,
       .story,
       .sidebar,
@@ -765,22 +728,35 @@
         display: none;
       }
 
-      .langbox,
       .brandbar {
         min-height: 72px;
       }
 
       .hero-content {
-        padding: 22px;
+        padding: 24px 22px 24px;
       }
 
       .hero-copy h1 {
-        font-size: 2.8rem;
+        font-size: 2.9rem;
+        line-height: 0.97;
       }
 
       .hero-copy p,
       .feature p {
         font-size: 1rem;
+      }
+
+      .hero-copy p {
+        margin-top: 18px;
+      }
+
+      .hero-panel {
+        padding: 22px;
+        border-radius: 22px;
+      }
+
+      .panel-title {
+        font-size: 1.4rem;
       }
 
       .feature,
@@ -799,6 +775,15 @@
         font-size: 1.45rem;
       }
 
+      .hero-topline {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .hero-actions {
+        align-self: flex-end;
+      }
+
       .side-nav {
         grid-template-columns: 1fr 1fr;
       }
@@ -807,15 +792,6 @@
     @media (max-width: 520px) {
       .side-nav {
         grid-template-columns: 1fr;
-      }
-
-      .hero-topline {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      .hero-actions {
-        align-self: flex-end;
       }
 
       .hero-action {
@@ -841,52 +817,50 @@
             </div>
             <div class="brand-meta">Creative studio for modern brands and ambitious ideas</div>
           </div>
-
-          <div class="langbox glass" aria-label="Language switcher">
-            <button class="active" data-lang="en">EN</button>
-            <button data-lang="ua">UA</button>
-          </div>
         </div>
 
-        <section class="hero glass anchor" id="home">
-          <div class="hero-bg"></div>
-          <div class="hero-noise"></div>
-          <div class="hero-overlay"></div>
+        <section class="hero anchor" id="home">
+          <div class="hero-surface">
+            <div class="hero-bg"></div>
+            <div class="hero-mesh"></div>
+            <div class="hero-vignette"></div>
 
-          <div class="hero-content">
-            <div class="hero-topline">
-              <div class="hero-kicker">
-                <span class="hero-kicker-dot"></span>
-                <span data-i18n="kicker">Independent design studio</span>
-              </div>
-
-              <div class="hero-actions">
-                <a href="#projects" class="hero-action" data-i18n="heroAction1">Projects</a>
-                <a href="#contact" class="hero-action">↗</a>
-              </div>
-            </div>
-
-            <div class="hero-bottom">
-              <div class="hero-copy">
-                <h1 data-i18n="heroTitle">Design that makes ambitious projects feel real</h1>
-                <p data-i18n="heroText">
-                  Moyasta Digital creates visual identity, presentations, and digital experiences
-                  that help businesses communicate with clarity, authority, and style.
-                </p>
-              </div>
-
-              <div class="hero-panel">
-                <div class="panel-label" data-i18n="panelLabel">Selected focus</div>
-                <div class="panel-title" data-i18n="panelTitle">
-                  Brand clarity, strong structure, and visuals that feel premium
+            <div class="hero-content">
+              <div class="hero-topline">
+                <div class="hero-kicker">
+                  <span class="hero-kicker-dot"></span>
+                  <span>Independent design studio</span>
                 </div>
-                <div class="panel-text" data-i18n="panelText">
-                  From pitch decks to websites and brand systems, every element is designed to look refined
-                  and work in the real world.
+
+                <div class="hero-actions">
+                  <a href="#projects" class="hero-action">Projects</a>
+                  <a href="#contact" class="hero-action hero-action-icon">↗</a>
                 </div>
-                <div class="panel-footer">
-                  <div class="panel-badge" data-i18n="panelBadge">Available for new projects</div>
-                  <a href="#services" class="pill" data-i18n="panelBtn">Explore</a>
+              </div>
+
+              <div class="hero-bottom">
+                <div class="hero-copy">
+                  <h1>Design that makes ambitious projects feel real</h1>
+                  <p>
+                    Moyasta Digital creates visual identity, presentations, and digital experiences
+                    that help businesses communicate with clarity, authority, and style.
+                  </p>
+                </div>
+
+                <div class="hero-panel">
+                  <div class="panel-label">Selected focus</div>
+                  <div class="panel-title">
+                    Brand clarity, strong structure, and visuals that feel premium
+                  </div>
+                  <div class="panel-text">
+                    From pitch decks to websites and brand systems, every element is designed to look refined
+                    and work in the real world.
+                  </div>
+
+                  <div class="panel-footer">
+                    <div class="panel-badge">Available for new projects</div>
+                    <a href="#services" class="pill">Explore</a>
+                  </div>
                 </div>
               </div>
             </div>
@@ -895,62 +869,62 @@
 
         <div class="grid-row">
           <section class="feature glass anchor" id="about">
-            <div class="eyebrow" data-i18n="aboutEyebrow">About</div>
-            <h2 data-i18n="aboutTitle">A clean, confident design language for brands that want to stand out</h2>
-            <p data-i18n="aboutText">
+            <div class="eyebrow">About</div>
+            <h2>A clean, confident design language for brands that want to stand out</h2>
+            <p>
               The studio focuses on turning ideas into strong visual systems. The goal is not decoration,
               but thoughtful design that improves trust, communication, and perception.
             </p>
           </section>
 
           <section class="story glass">
-            <div class="eyebrow" data-i18n="storyEyebrow">Current direction</div>
-            <h3 data-i18n="storyTitle">Branding, decks, and websites built with modern visual discipline</h3>
-            <p data-i18n="storyText">
+            <div class="eyebrow">Current direction</div>
+            <h3>Branding, decks, and websites built with modern visual discipline</h3>
+            <p>
               A sharp structure, better typography, balanced spacing, and a more editorial feel —
               all working together to make the final result look serious and memorable.
             </p>
             <div class="story-bottom">
               <div class="mini-mark"></div>
-              <a href="#projects" class="pill" data-i18n="storyBtn">View more</a>
+              <a href="#projects" class="pill">View more</a>
             </div>
           </section>
         </div>
 
         <section class="sections">
           <article class="section-card glass anchor" id="services">
-            <div class="eyebrow" data-i18n="servicesEyebrow">Services</div>
-            <h3 data-i18n="servicesTitle">What the studio does</h3>
+            <div class="eyebrow">Services</div>
+            <h3>What the studio does</h3>
             <ul class="services-list">
-              <li data-i18n="srv1">Brand identity and logo systems</li>
-              <li data-i18n="srv2">Pitch decks and presentation design</li>
-              <li data-i18n="srv3">Landing pages and website concepts</li>
-              <li data-i18n="srv4">Social media visuals and campaign materials</li>
-              <li data-i18n="srv5">Print-ready design for marketing and business</li>
+              <li>Brand identity and logo systems</li>
+              <li>Pitch decks and presentation design</li>
+              <li>Landing pages and website concepts</li>
+              <li>Social media visuals and campaign materials</li>
+              <li>Print-ready design for marketing and business</li>
             </ul>
           </article>
 
           <article class="section-card glass anchor" id="projects">
-            <div class="eyebrow" data-i18n="projectsEyebrow">Projects</div>
-            <h3 data-i18n="projectsTitle">Work made for communication, trust, and growth</h3>
-            <p data-i18n="projectsText">
+            <div class="eyebrow">Projects</div>
+            <h3>Work made for communication, trust, and growth</h3>
+            <p>
               The studio works across business presentations, branding, promotional materials,
               and digital design systems — with a focus on clarity, aesthetics, and practical use.
             </p>
           </article>
 
           <article class="section-card glass">
-            <div class="eyebrow" data-i18n="approachEyebrow">Approach</div>
-            <h3 data-i18n="approachTitle">Minimal, strong, and strategically visual</h3>
-            <p data-i18n="approachText">
+            <div class="eyebrow">Approach</div>
+            <h3>Minimal, strong, and strategically visual</h3>
+            <p>
               Every project is built around hierarchy, rhythm, tone, and consistency —
               so the result feels more premium, more intentional, and more effective.
             </p>
           </article>
 
           <article class="section-card glass anchor" id="contact">
-            <div class="eyebrow" data-i18n="contactEyebrow">Contact</div>
-            <h3 data-i18n="contactTitle">Let’s build something sharp and memorable</h3>
+            <div class="eyebrow">Contact</div>
+            <h3>Let’s build something sharp and memorable</h3>
             <p>
               Email: moystadigital@gmail.com<br />
               Website: moyastadigital.com
@@ -961,31 +935,31 @@
         <section class="stats">
           <article class="stat-card glass">
             <div class="stat-number">7+</div>
-            <div class="stat-label" data-i18n="stat1">Years of design experience across branding and digital communication</div>
+            <div class="stat-label">Years of design experience across branding and digital communication</div>
           </article>
 
           <article class="stat-card glass">
             <div class="stat-number">100%</div>
-            <div class="stat-label" data-i18n="stat2">Focused on clear structure, strong presentation, and usable results</div>
+            <div class="stat-label">Focused on clear structure, strong presentation, and usable results</div>
           </article>
 
           <article class="stat-card glass">
             <div class="stat-number">1</div>
-            <div class="stat-label" data-i18n="stat3">Studio voice — consistent, premium, and built with intention</div>
+            <div class="stat-label">Studio voice — consistent, premium, and built with intention</div>
           </article>
         </section>
       </main>
 
       <aside class="sidebar glass">
-        <div class="side-title" data-i18n="sideTitle">Navigation</div>
+        <div class="side-title">Navigation</div>
         <nav class="side-nav">
-          <a href="#home" class="active" data-i18n="navHome">Home</a>
-          <a href="#about" data-i18n="navAbout">About</a>
-          <a href="#services" data-i18n="navServices">Services</a>
-          <a href="#projects" data-i18n="navProjects">Projects</a>
-          <a href="#contact" data-i18n="navContact">Contact</a>
+          <a href="#home" class="active">Home</a>
+          <a href="#about">About</a>
+          <a href="#services">Services</a>
+          <a href="#projects">Projects</a>
+          <a href="#contact">Contact</a>
         </nav>
-        <div class="side-foot" data-i18n="sideFoot">
+        <div class="side-foot">
           Refined visual systems for businesses, founders, and institutions.
         </div>
       </aside>
@@ -993,131 +967,6 @@
   </div>
 
   <script>
-    const translations = {
-      en: {
-        kicker: "Independent design studio",
-        heroAction1: "Projects",
-        heroTitle: "Design that makes ambitious projects feel real",
-        heroText:
-          "Moyasta Digital creates visual identity, presentations, and digital experiences that help businesses communicate with clarity, authority, and style.",
-        panelLabel: "Selected focus",
-        panelTitle: "Brand clarity, strong structure, and visuals that feel premium",
-        panelText:
-          "From pitch decks to websites and brand systems, every element is designed to look refined and work in the real world.",
-        panelBadge: "Available for new projects",
-        panelBtn: "Explore",
-        aboutEyebrow: "About",
-        aboutTitle: "A clean, confident design language for brands that want to stand out",
-        aboutText:
-          "The studio focuses on turning ideas into strong visual systems. The goal is not decoration, but thoughtful design that improves trust, communication, and perception.",
-        storyEyebrow: "Current direction",
-        storyTitle: "Branding, decks, and websites built with modern visual discipline",
-        storyText:
-          "A sharp structure, better typography, balanced spacing, and a more editorial feel — all working together to make the final result look serious and memorable.",
-        storyBtn: "View more",
-        servicesEyebrow: "Services",
-        servicesTitle: "What the studio does",
-        projectsEyebrow: "Projects",
-        projectsTitle: "Work made for communication, trust, and growth",
-        projectsText:
-          "The studio works across business presentations, branding, promotional materials, and digital design systems — with a focus on clarity, aesthetics, and practical use.",
-        approachEyebrow: "Approach",
-        approachTitle: "Minimal, strong, and strategically visual",
-        approachText:
-          "Every project is built around hierarchy, rhythm, tone, and consistency — so the result feels more premium, more intentional, and more effective.",
-        contactEyebrow: "Contact",
-        contactTitle: "Let’s build something sharp and memorable",
-        stat1: "Years of design experience across branding and digital communication",
-        stat2: "Focused on clear structure, strong presentation, and usable results",
-        stat3: "Studio voice — consistent, premium, and built with intention",
-        sideTitle: "Navigation",
-        navHome: "Home",
-        navAbout: "About",
-        navServices: "Services",
-        navProjects: "Projects",
-        navContact: "Contact",
-        sideFoot: "Refined visual systems for businesses, founders, and institutions.",
-        srv1: "Brand identity and logo systems",
-        srv2: "Pitch decks and presentation design",
-        srv3: "Landing pages and website concepts",
-        srv4: "Social media visuals and campaign materials",
-        srv5: "Print-ready design for marketing and business"
-      },
-      ua: {
-        kicker: "Незалежна дизайн-студія",
-        heroAction1: "Проєкти",
-        heroTitle: "Дизайн, який робить амбітні проєкти відчутно реальними",
-        heroText:
-          "Moyasta Digital створює айдентику, презентації та цифрові рішення, які допомагають бізнесу комунікувати чітко, впевнено й стильно.",
-        panelLabel: "Фокус студії",
-        panelTitle: "Чіткість бренду, сильна структура та візуали з преміальним відчуттям",
-        panelText:
-          "Від пітч-деків до сайтів і бренд-систем — кожен елемент створюється так, щоб виглядати витончено й працювати в реальному використанні.",
-        panelBadge: "Відкрито до нових проєктів",
-        panelBtn: "Дивитися",
-        aboutEyebrow: "Про студію",
-        aboutTitle: "Чиста й впевнена дизайн-мова для брендів, які хочуть виділятися",
-        aboutText:
-          "Студія зосереджується на перетворенні ідей у сильні візуальні системи. Мета — не декор, а осмислений дизайн, який підсилює довіру, комунікацію та сприйняття.",
-        storyEyebrow: "Актуальний напрям",
-        storyTitle: "Брендинг, презентації та сайти з сучасною візуальною дисципліною",
-        storyText:
-          "Чітка структура, краща типографіка, збалансовані відступи та більш editorial-подача — все це працює разом, щоб результат виглядав серйозно й запам’ятовувався.",
-        storyBtn: "Більше",
-        servicesEyebrow: "Послуги",
-        servicesTitle: "Що робить студія",
-        projectsEyebrow: "Проєкти",
-        projectsTitle: "Робота для комунікації, довіри та росту",
-        projectsText:
-          "Студія працює з бізнес-презентаціями, брендингом, промоматеріалами та цифровими дизайн-системами — з фокусом на ясність, естетику та практичне застосування.",
-        approachEyebrow: "Підхід",
-        approachTitle: "Мінімально, сильно та стратегічно візуально",
-        approachText:
-          "Кожен проєкт будується навколо ієрархії, ритму, тону та цілісності — щоб результат виглядав дорожче, впевненіше й ефективніше.",
-        contactEyebrow: "Контакт",
-        contactTitle: "Створімо щось точне й пам’ятне",
-        stat1: "Років досвіду в дизайні, брендингу та цифровій комунікації",
-        stat2: "Фокус на чіткій структурі, сильній подачі та робочому результаті",
-        stat3: "Єдиний голос студії — цілісний, преміальний і продуманий",
-        sideTitle: "Навігація",
-        navHome: "Головна",
-        navAbout: "Про студію",
-        navServices: "Послуги",
-        navProjects: "Проєкти",
-        navContact: "Контакт",
-        sideFoot: "Витончені візуальні системи для бізнесу, засновників та інституцій.",
-        srv1: "Айдентика та логосистеми",
-        srv2: "Пітч-деки та дизайн презентацій",
-        srv3: "Лендінги та концепції сайтів",
-        srv4: "Візуали для соцмереж і рекламних матеріалів",
-        srv5: "Підготовлений до друку маркетинговий дизайн"
-      }
-    };
-
-    const buttons = document.querySelectorAll("[data-lang]");
-    const i18nNodes = document.querySelectorAll("[data-i18n]");
-
-    function setLanguage(lang) {
-      i18nNodes.forEach((node) => {
-        const key = node.dataset.i18n;
-        if (translations[lang] && translations[lang][key]) {
-          node.textContent = translations[lang][key];
-        }
-      });
-
-      buttons.forEach((btn) => {
-        btn.classList.toggle("active", btn.dataset.lang === lang);
-      });
-
-      document.documentElement.lang = lang;
-    }
-
-    buttons.forEach((btn) => {
-      btn.addEventListener("click", () => setLanguage(btn.dataset.lang));
-    });
-
-    setLanguage("en");
-
     const links = document.querySelectorAll(".side-nav a");
     const anchors = document.querySelectorAll(".anchor");
 
