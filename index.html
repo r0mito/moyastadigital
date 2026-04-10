@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html lang="uk">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Штучний інтелект в Україні</title>
-    <meta name="description" content="Центр відповідального ШІ">
+    <title>Moyasta Digital — Branding & Identity</title>
+    <meta name="description" content="Professional branding and identity creation that turns ideas into successful businesses.">
+
     <style>
         :root {
             --primary: #000000;
@@ -12,6 +13,7 @@
             --light-accent: #4897ae;
             --text: #ffffff;
             --gray: #878787;
+            --card-bg: #1b1b1b;
         }
 
         * {
@@ -21,10 +23,10 @@
         }
 
         body {
-            font-family: 'eUkraine', system-ui, sans-serif;
+            font-family: 'eUkraine', system-ui, -apple-system, sans-serif;
             background-color: var(--primary);
             color: var(--text);
-            line-height: 1.5;
+            line-height: 1.6;
             font-weight: 300;
         }
 
@@ -36,71 +38,72 @@
             width: 100%;
             background-color: var(--primary);
             z-index: 1000;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
+            border-bottom: 1px solid rgba(255,255,255,0.08);
         }
 
         .header-inner {
             max-width: 1440px;
             margin: 0 auto;
-            padding: 1rem 2rem;
+            padding: 1.2rem 2.5rem;
             display: flex;
             align-items: center;
             justify-content: space-between;
         }
 
         .logo {
-            font-size: 1.6rem;
+            font-size: 1.75rem;
             font-weight: 700;
             letter-spacing: -0.02em;
+            color: var(--text);
+            text-decoration: none;
         }
 
         nav ul {
             display: flex;
             list-style: none;
-            gap: 2.5rem;
+            gap: 2.8rem;
         }
 
         nav a {
-            color: var(--text);
+            color: var(--gray);
             text-decoration: none;
-            font-size: 1rem;
+            font-size: 1.05rem;
             font-weight: 400;
-            transition: color 0.3s;
+            transition: color 0.4s ease;
         }
 
         nav a:hover,
         nav a:focus-visible {
-            color: var(--light-accent);
+            color: var(--text);
         }
 
-        /* Hero */
+        /* Hero Section */
         .hero {
             min-height: 100vh;
             background-color: var(--primary);
             display: flex;
             align-items: center;
-            padding: 120px 2rem 80px;
+            padding: 140px 2rem 100px;
+            text-align: center;
             position: relative;
-            overflow: hidden;
         }
 
         .hero-content {
-            max-width: 1100px;
+            max-width: 960px;
             margin: 0 auto;
-            text-align: center;
         }
 
         .hero h1 {
-            font-size: clamp(3rem, 8vw, 6.5rem);
-            line-height: 1.05;
+            font-size: clamp(3.2rem, 7vw, 5.8rem);
+            line-height: 1.08;
             font-weight: 400;
-            margin-bottom: 2rem;
             letter-spacing: -0.03em;
+            margin-bottom: 1.8rem;
         }
 
         .hero p {
             font-size: 1.35rem;
-            max-width: 720px;
+            max-width: 680px;
             margin: 0 auto 3rem;
             opacity: 0.9;
         }
@@ -113,22 +116,24 @@
         }
 
         .btn {
-            padding: 18px 36px;
+            padding: 18px 38px;
             border-radius: 9999px;
             font-weight: 500;
             font-size: 1.05rem;
             text-decoration: none;
-            transition: all 0.4s;
+            display: inline-block;
+            transition: all 0.4s ease;
         }
 
         .btn-primary {
             background-color: white;
-            color: black;
+            color: var(--primary);
         }
 
         .btn-primary:hover {
             background-color: var(--accent);
             color: white;
+            transform: translateY(-3px);
         }
 
         .btn-secondary {
@@ -138,119 +143,29 @@
 
         .btn-secondary:hover {
             background-color: white;
-            color: black;
+            color: var(--primary);
         }
 
-        /* Mission */
-        .mission {
-            padding: 140px 2rem 100px;
-            background-color: #1b1b1b;
+        /* Quote Section */
+        .quote-section {
+            background-color: var(--card-bg);
+            padding: 110px 2rem;
+            text-align: center;
         }
 
-        .mission-inner {
-            max-width: 1200px;
+        .quote {
+            max-width: 820px;
             margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr 1.6fr;
-            gap: 5rem;
-            align-items: start;
+            font-size: 1.65rem;
+            line-height: 1.45;
+            font-style: italic;
+            opacity: 0.95;
         }
 
-        .mission-text h2 {
-            font-size: 2.8rem;
-            line-height: 1.15;
-            margin-bottom: 2rem;
-        }
-
-        .mission-text p {
-            font-size: 1.25rem;
-            opacity: 0.85;
-            line-height: 1.6;
-        }
-
-        /* Goals */
-        .goals {
-            padding: 120px 2rem;
-            background-color: var(--primary);
-        }
-
-        .goals h2 {
-            text-align: center;
-            font-size: 2.8rem;
-            margin-bottom: 4rem;
-        }
-
-        .goals-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .goal-card {
-            background-color: #1b1b1b;
-            border-radius: 24px;
-            padding: 2.5rem 2rem;
-            transition: transform 0.4s;
-        }
-
-        .goal-card:hover {
-            transform: translateY(-12px);
-        }
-
-        .goal-card .number {
+        .quote-author {
+            margin-top: 2.5rem;
             font-size: 1.1rem;
-            opacity: 0.6;
-            margin-bottom: 1.5rem;
-        }
-
-        .goal-card h3 {
-            font-size: 1.45rem;
-            line-height: 1.35;
-            margin-bottom: 1.25rem;
-        }
-
-        /* Directions */
-        .directions {
-            padding: 120px 2rem;
-            background-color: #1b1b1b;
-        }
-
-        .directions h2 {
-            text-align: center;
-            font-size: 2.8rem;
-            margin-bottom: 4rem;
-        }
-
-        .directions-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .direction-card {
-            background-color: #111;
-            border-radius: 24px;
-            overflow: hidden;
-            transition: all 0.4s;
-        }
-
-        .direction-card:hover {
-            transform: scale(1.03);
-        }
-
-        .direction-card img {
-            width: 100%;
-            height: 240px;
-            object-fit: cover;
-        }
-
-        .direction-card .content {
-            padding: 2rem;
-        }
-
-        .direction-card h3 {
-            font-size: 1.6rem;
-            margin-bottom: 1rem;
+            color: var(--gray);
         }
 
         /* Footer */
@@ -264,48 +179,46 @@
             max-width: 1200px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: 2fr 1fr 1fr;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 4rem;
         }
 
         .footer-col h3 {
-            color: white;
+            color: var(--text);
             margin-bottom: 1.5rem;
             font-size: 1.35rem;
+            font-weight: 500;
         }
 
         .footer-col a {
-            display: block;
             color: var(--gray);
             text-decoration: none;
-            margin-bottom: 0.8rem;
+            display: block;
+            margin-bottom: 0.85rem;
+            transition: color 0.3s;
         }
 
         .footer-col a:hover {
-            color: white;
+            color: var(--text);
         }
 
         .footer-bottom {
             border-top: 1px solid rgba(255,255,255,0.1);
-            margin-top: 6rem;
+            margin-top: 5rem;
             padding-top: 2rem;
             text-align: center;
             font-size: 0.95rem;
         }
 
-        @media (max-width: 1024px) {
-            .hero h1 {
-                font-size: 3.2rem;
-            }
-            .mission-inner {
-                grid-template-columns: 1fr;
-            }
-        }
-
         @media (max-width: 768px) {
+            .header-inner {
+                padding: 1rem 1.5rem;
+            }
             nav ul {
                 gap: 1.5rem;
-                font-size: 0.95rem;
+            }
+            .hero h1 {
+                font-size: 2.9rem;
             }
         }
     </style>
@@ -315,13 +228,12 @@
     <!-- Header -->
     <header>
         <div class="header-inner">
-            <a href="/" class="logo">ШІ в Україні</a>
+            <a href="/" class="logo">Moyasta Digital</a>
             <nav>
                 <ul>
-                    <li><a href="#mission">Місія</a></li>
-                    <li><a href="#goals">Цілі</a></li>
-                    <li><a href="#directions">Напрями</a></li>
-                    <li><a href="#team">Візіонери</a></li>
+                    <li><a href="/about">About</a></li>
+                    <li><a href="/services">Services</a></li>
+                    <li><a href="/contacts">Contacts</a></li>
                 </ul>
             </nav>
         </div>
@@ -330,106 +242,43 @@
     <!-- Hero -->
     <section class="hero">
         <div class="hero-content">
-            <h1>Штучний інтелект<br>в Україні</h1>
-            <p>Центр відповідального ШІ. Розвиток, регулювання та впровадження штучного інтелекту для майбутнього України.</p>
+            <h1>Design that drives your marketing forward</h1>
+            <p>The goal is to help entrepreneurs, governments, and community leaders unlock their full potential and elevate their projects.</p>
             <div class="btn-group">
-                <a href="#mission" class="btn btn-primary">Дізнатися більше</a>
-                <a href="#directions" class="btn btn-secondary">Напрями роботи</a>
+                <a href="/contacts" class="btn btn-primary">Contact us</a>
+                <a href="/services" class="btn btn-secondary">View Portfolio</a>
             </div>
         </div>
     </section>
 
-    <!-- Mission -->
-    <section id="mission" class="mission">
-        <div class="mission-inner">
-            <div class="mission-text">
-                <h2>Місія</h2>
-                <p>До 2030 року Україна має увійти в ТОП-3 країн світу за рівнем інтеграції та впровадження AI-рішень у ключових сферах: державне управління, цифрові послуги, освіта, охорона здоров’я та оборона.</p>
-            </div>
-            <img src="https://ai-files.thedigital.gov.ua/mission.png" alt="Місія" style="width:100%; border-radius:24px;">
+    <!-- Quote -->
+    <section class="quote-section">
+        <div class="quote">
+            "Design is not just what it looks like and feels like. Design is how it works."
         </div>
-    </section>
-
-    <!-- Goals -->
-    <section id="goals" class="goals">
-        <h2>Цілі</h2>
-        <div class="goals-grid">
-            <div class="goal-card">
-                <div class="number">01</div>
-                <h3>Впровадити AI-рішення в пріоритетні сфери</h3>
-                <p>Державне управління, цифрові послуги, освіта, охорона здоров’я та оборона.</p>
-            </div>
-            <div class="goal-card">
-                <div class="number">02</div>
-                <h3>Створити найкраще в світі правове середовище для розвитку ШІ</h3>
-            </div>
-            <div class="goal-card">
-                <div class="number">03</div>
-                <h3>Розробити національну AI-стратегію та програму інвестування</h3>
-            </div>
-            <div class="goal-card">
-                <div class="number">04</div>
-                <h3>Досягти зростання AI-стартапів мінімум на 50% щорічно</h3>
-            </div>
-            <div class="goal-card">
-                <div class="number">05</div>
-                <h3>Розвивати статус держави з найбільшою кількістю AI-розробників в Європі</h3>
-            </div>
-            <div class="goal-card">
-                <div class="number">06</div>
-                <h3>Провести дослідження та поставити цілі для інших пріоритетних галузей</h3>
-            </div>
-        </div>
-    </section>
-
-    <!-- Directions -->
-    <section id="directions" class="directions">
-        <h2>Напрями</h2>
-        <div class="directions-grid">
-            <div class="direction-card">
-                <img src="https://ai-files.thedigital.gov.ua/direction-regulation.png" alt="Регулювання">
-                <div class="content">
-                    <h3>Регулювання</h3>
-                    <p>Знайомтеся з підходом України до регулювання та можливостями у сфері ШІ для бізнесів.</p>
-                </div>
-            </div>
-            <div class="direction-card">
-                <img src="https://ai-files.thedigital.gov.ua/direction-implementation.png" alt="Впровадження">
-                <div class="content">
-                    <h3>Впровадження</h3>
-                    <p>Створюємо AI-продукти для держави в межах WINWIN AI Center of Excellence.</p>
-                </div>
-            </div>
-            <div class="direction-card">
-                <img src="https://ai-files.thedigital.gov.ua/direction-development.png" alt="Розвиток">
-                <div class="content">
-                    <h3>Розвиток</h3>
-                    <p>Формуємо AI-ком’юніті, працюємо над ШІ-стратегією та проводимо освітні заходи.</p>
-                </div>
-            </div>
-        </div>
+        <div class="quote-author">— Steve Jobs</div>
     </section>
 
     <!-- Footer -->
     <footer>
         <div class="footer-inner">
             <div class="footer-col">
-                <h3>Штучний інтелект в Україні</h3>
-                <p>Центр відповідального ШІ</p>
+                <h3>Moyasta Digital</h3>
+                <p>We specialize in branding and identity creation. Professional design services that turn ideas into successful businesses.</p>
             </div>
             <div class="footer-col">
-                <h3>Навігація</h3>
-                <a href="#mission">Місія</a>
-                <a href="#goals">Цілі</a>
-                <a href="#directions">Напрями</a>
+                <h3>Navigation</h3>
+                <a href="/about">About</a>
+                <a href="/services">Services</a>
+                <a href="/contacts">Contacts</a>
             </div>
             <div class="footer-col">
-                <h3>Контакти</h3>
-                <p>ai@thedigital.gov.ua</p>
+                <h3>Contact</h3>
+                <p>moystadigital@gmail.com</p>
             </div>
         </div>
         <div class="footer-bottom">
-            © 2026 Міністерство цифрової трансформації України. Усі права захищені.
+            © 2026 Moyasta Digital. All rights reserved.
         </div>
     </footer>
 
