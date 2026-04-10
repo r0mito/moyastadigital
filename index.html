@@ -1,1 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moyasta Digital</title>
+    <meta name="description" content="We specialize in branding and identity creation. Professional design services that turn your ideas into a successful business.">
+    <style>
+        :root {
+            --primary: #000000;
+            --accent: #6361ee;
+            --light: #ffffff;
+            --dark: #1d1d24;
+            --gray: #b7b7b7;
+        }
 
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'e-Ukraine', system-ui, sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: #fff;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--primary);
+            color: white;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: white;
+            text-decoration: none;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--accent);
+        }
+
+        /* Hero Section */
+        .hero {
+            background-color: var(--primary);
+            color: white;
+            padding: 120px 20px 100px;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3.8rem;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 1.35rem;
+            max-width: 700px;
+            margin: 0 auto 2.5rem;
+            opacity: 0.95;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 14px 32px;
+            border-radius: 30px;
+            font-weight: 700;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s;
+        }
+
+        .btn-primary {
+            background-color: white;
+            color: var(--primary);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--accent);
+            color: white;
+        }
+
+        .btn-secondary {
+            border: 2px solid white;
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background-color: white;
+            color: var(--primary);
+        }
+
+        /* Quote Section */
+        .quote-section {
+            background-color: var(--primary);
+            color: white;
+            padding: 100px 20px;
+            text-align: center;
+        }
+
+        .quote {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.6rem;
+            font-style: italic;
+            line-height: 1.5;
+        }
+
+        .quote-author {
+            margin-top: 2rem;
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary);
+            color: white;
+            padding: 80px 20px 40px;
+        }
+
+        .footer-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 3rem;
+        }
+
+        .footer-col h3 {
+            margin-bottom: 1.2rem;
+            font-size: 1.3rem;
+        }
+
+        .footer-col a {
+            color: var(--gray);
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.6rem;
+        }
+
+        .footer-col a:hover {
+            color: var(--accent);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.15);
+            padding-top: 2rem;
+            margin-top: 4rem;
+            text-align: center;
+            font-size: 0.95rem;
+            opacity: 0.8;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            nav ul {
+                gap: 1rem;
+                font-size: 0.95rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="header-inner">
+            <a href="/" class="logo">Moyasta Digital</a>
+            <nav>
+                <ul>
+                    <li><a href="/about">About</a></li>
+                    <li><a href="/services">Services</a></li>
+                    <li><a href="/contacts">Contacts</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Design that drives your marketing forward</h1>
+            <p>The goal is to help entrepreneurs, governments, and community leaders unlock their full potential and elevate their projects.</p>
+            <div class="btn-group">
+                <a href="/contacts" class="btn btn-primary">Contact us</a>
+                <a href="/services" class="btn btn-secondary">Portfolio</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quote -->
+    <section class="quote-section">
+        <div class="quote">
+            "Design is not just what it looks like and feels like. Design is how it works."
+        </div>
+        <div class="quote-author">— Steve Jobs</div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-col">
+                <h3>Moyasta Digital</h3>
+                <p>We specialize in branding and identity creation.</p>
+            </div>
+            <div class="footer-col">
+                <h3>Navigation</h3>
+                <a href="/about">About</a>
+                <a href="/services">Services</a>
+                <a href="/contacts">Contacts</a>
+            </div>
+            <div class="footer-col">
+                <h3>Contact</h3>
+                <p>moystadigital@gmail.com</p>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            © 2026 Moyasta Digital. All rights reserved.
+        </div>
+    </footer>
+
+</body>
+</html>
