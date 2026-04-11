@@ -491,6 +491,40 @@
       max-width: 540px;
     }
 
+    .story-intro {
+      color: #d1d6dd;
+      font-size: 1.02rem;
+      line-height: 1.5;
+      margin-top: 2px;
+      margin-bottom: 16px;
+    }
+
+    .story-team {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .team-member {
+      padding: 12px 14px;
+      border-radius: 16px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.08);
+      display: grid;
+      gap: 2px;
+    }
+
+    .team-member strong {
+      font-size: 1.05rem;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+    }
+
+    .team-member span {
+      color: var(--muted);
+      font-size: 0.88rem;
+    }
+
     .story-bottom {
       margin-top: 24px;
       display: flex;
@@ -774,6 +808,10 @@
         font-size: 1.45rem;
       }
 
+      .story-team {
+        grid-template-columns: 1fr;
+      }
+
       .hero-topline {
         flex-direction: column;
         align-items: flex-start;
@@ -896,11 +934,18 @@
 
           <section class="story glass">
             <div class="eyebrow">Current direction</div>
-            <h3>Branding, decks, and websites built with modern visual discipline</h3>
-            <p>
-              A sharp structure, better typography, balanced spacing, and a more editorial feel —
-              all working together to make the final result look serious and memorable.
-            </p>
+            <h3>Owners of Moyasta Digital</h3>
+            <div class="story-intro">Senior Graphic Designers</div>
+            <div class="story-team">
+              <div class="team-member">
+                <strong>Nataliya K</strong>
+                <span>Senior Graphic Designer</span>
+              </div>
+              <div class="team-member">
+                <strong>Roman Pichugin</strong>
+                <span>Senior Graphic Designer</span>
+              </div>
+            </div>
             <div class="story-bottom">
               <div class="mini-mark"></div>
               <a href="#portfolio" class="pill">View more</a>
