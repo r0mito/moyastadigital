@@ -790,6 +790,8 @@
       min-height: 260px;
       position: relative;
       overflow: hidden;
+      display: flex;
+      flex-direction: column;
     }
 
     .section-card::after {
@@ -817,6 +819,10 @@
       line-height: 1.62;
       max-width: 620px;
       font-size: 1rem;
+    }
+
+    .section-card .panel-footer {
+      align-self: flex-start;
     }
 
     .services-list {
@@ -856,6 +862,7 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+      gap: 18px;
     }
 
     .stat-number {
@@ -1052,6 +1059,11 @@
         padding: 22px 20px;
       }
 
+      .sections,
+      .stats {
+        gap: 14px;
+      }
+
       .feature h2 {
         font-size: 2.3rem;
       }
@@ -1059,6 +1071,42 @@
       .story h3,
       .section-card h3 {
         font-size: 1.45rem;
+      }
+
+      .section-card {
+        min-height: auto;
+      }
+
+      .section-card p {
+        max-width: 30ch;
+      }
+
+      .stat-card {
+        min-height: auto;
+        gap: 16px;
+      }
+
+      .stat-label {
+        max-width: 26ch;
+      }
+
+      .section-card .panel-footer {
+        margin-top: 24px;
+      }
+
+      .section-card .pill {
+        width: auto;
+        min-width: 140px;
+      }
+
+      .services-list {
+        margin-top: 16px;
+        gap: 10px;
+      }
+
+      .services-list li {
+        font-size: 0.98rem;
+        line-height: 1.5;
       }
 
       .story-team {
@@ -1155,6 +1203,65 @@
       .hero-copy p {
         font-size: 0.96rem;
         line-height: 1.55;
+      }
+
+      .section-card {
+        padding: 22px 18px;
+        gap: 0;
+      }
+
+      .section-card h3 {
+        font-size: 1.28rem;
+        line-height: 1.08;
+        max-width: 11ch;
+        margin-bottom: 12px;
+      }
+
+      .section-card p {
+        font-size: 0.98rem;
+        line-height: 1.58;
+        max-width: 24ch;
+      }
+
+      .section-card .panel-footer {
+        margin-top: 22px;
+      }
+
+      .section-card .pill {
+        width: auto;
+        min-width: 132px;
+        height: 44px;
+        padding: 0 20px;
+      }
+
+      .services-list {
+        margin-top: 14px;
+        gap: 9px;
+      }
+
+      .services-list li {
+        font-size: 0.95rem;
+        padding-left: 16px;
+      }
+
+      .stats {
+        gap: 12px;
+      }
+
+      .stat-card {
+        padding: 22px 18px;
+        min-height: auto;
+        gap: 14px;
+      }
+
+      .stat-number {
+        font-size: 2.2rem;
+      }
+
+      .stat-label {
+        font-size: 0.96rem;
+        line-height: 1.5;
+        max-width: 22ch;
       }
 
       .side-nav {
@@ -1365,7 +1472,7 @@
             <div class="eyebrow">Contact</div>
             <h3>Let’s build something sharp and memorable</h3>
             <p>
-              Email: moystadigital@gmail.com
+              Email: moyastadigital@gmail.com
             </p>
           </article>
         </section>
@@ -1385,7 +1492,10 @@
       </main>
 
       <aside class="sidebar glass">
-        <div class="side-title">Navigation</div>
+        <div class="sidebar-head">
+          <div class="side-title">Navigation</div>
+          <button class="sidebar-close" type="button" aria-label="Close navigation menu"></button>
+        </div>
         <nav class="side-nav">
           <a href="#top" class="active">Home</a>
           <a href="#about">About</a>
@@ -1400,6 +1510,7 @@
   <script>
     const menuToggle = document.querySelector(".menu-toggle");
     const sidebar = document.querySelector(".sidebar");
+    const sidebarClose = document.querySelector(".sidebar-close");
     const links = document.querySelectorAll(".side-nav a");
     const anchors = document.querySelectorAll(".anchor");
     const heroSurface = document.querySelector(".hero-surface");
@@ -1415,6 +1526,10 @@
         menuToggle.setAttribute("aria-expanded", open ? "true" : "false");
       });
 
+      if (sidebarClose) {
+        sidebarClose.addEventListener("click", closeMenu);
+      }
+
       sidebar.querySelectorAll("a").forEach((link) => {
         link.addEventListener("click", closeMenu);
       });
@@ -1422,6 +1537,25 @@
       document.addEventListener("keydown", (event) => {
         if (event.key === "Escape") closeMenu();
       });
+
+      let touchStartX = 0;
+      let touchStartY = 0;
+
+      sidebar.addEventListener("touchstart", (event) => {
+        const touch = event.changedTouches[0];
+        touchStartX = touch.clientX;
+        touchStartY = touch.clientY;
+      }, { passive: true });
+
+      sidebar.addEventListener("touchend", (event) => {
+        const touch = event.changedTouches[0];
+        const deltaX = touch.clientX - touchStartX;
+        const deltaY = touch.clientY - touchStartY;
+
+        if (document.body.classList.contains("menu-open") && deltaX > 56 && Math.abs(deltaY) < 42) {
+          closeMenu();
+        }
+      }, { passive: true });
     }
 
     const observer = new IntersectionObserver(

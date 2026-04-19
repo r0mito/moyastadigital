@@ -808,7 +808,10 @@
       </main>
 
       <aside class="sidebar glass">
-        <div class="side-title">Navigation</div>
+        <div class="sidebar-head">
+          <div class="side-title">Navigation</div>
+          <button class="sidebar-close" type="button" aria-label="Close navigation menu"></button>
+        </div>
         <nav class="side-nav">
           <a href="index.html#top">Home</a>
           <a href="index.html#about">About</a>
@@ -837,6 +840,7 @@
   <script>
     const menuToggle = document.querySelector(".menu-toggle");
     const sidebar = document.querySelector(".sidebar");
+    const sidebarClose = document.querySelector(".sidebar-close");
 
     if (menuToggle && sidebar) {
       const closeMenu = () => {
@@ -849,6 +853,10 @@
         menuToggle.setAttribute("aria-expanded", open ? "true" : "false");
       });
 
+      if (sidebarClose) {
+        sidebarClose.addEventListener("click", closeMenu);
+      }
+
       sidebar.querySelectorAll("a").forEach((link) => {
         link.addEventListener("click", closeMenu);
       });
@@ -856,6 +864,25 @@
       document.addEventListener("keydown", (event) => {
         if (event.key === "Escape") closeMenu();
       });
+
+      let touchStartX = 0;
+      let touchStartY = 0;
+
+      sidebar.addEventListener("touchstart", (event) => {
+        const touch = event.changedTouches[0];
+        touchStartX = touch.clientX;
+        touchStartY = touch.clientY;
+      }, { passive: true });
+
+      sidebar.addEventListener("touchend", (event) => {
+        const touch = event.changedTouches[0];
+        const deltaX = touch.clientX - touchStartX;
+        const deltaY = touch.clientY - touchStartY;
+
+        if (document.body.classList.contains("menu-open") && deltaX > 56 && Math.abs(deltaY) < 42) {
+          closeMenu();
+        }
+      }, { passive: true });
     }
 
     (function () {

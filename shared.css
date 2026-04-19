@@ -62,8 +62,41 @@ img {
   min-width: 0;
 }
 
+.frame,
+.main,
+.cases,
+.sections,
+.stats,
+.projects,
+.archive-grid,
+.gallery-sections {
+  gap: 18px;
+}
+
+.gallery-section,
+.case-gallery,
+.archive-gallery,
+.story-team,
+.pill-row,
+.project-actions,
+.panel-footer {
+  gap: 14px;
+}
+
 .main > * {
   min-width: 0;
+}
+
+.archive-thumb,
+.gallery-card,
+.gallery-tile {
+  max-width: 100%;
+}
+
+.archive-thumb img,
+.gallery-card img,
+.gallery-tile img {
+  max-width: 100%;
 }
 
 .panel-footer,
@@ -159,6 +192,50 @@ img {
   font-weight: 600;
 }
 
+.sidebar-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.sidebar-close {
+  display: none;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--text);
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  cursor: pointer;
+}
+
+.sidebar-close::before,
+.sidebar-close::after {
+  content: "";
+  position: absolute;
+  width: 14px;
+  height: 2px;
+  border-radius: 999px;
+  background: currentColor;
+}
+
+.sidebar-close {
+  position: relative;
+}
+
+.sidebar-close::before {
+  transform: rotate(45deg);
+}
+
+.sidebar-close::after {
+  transform: rotate(-45deg);
+}
+
 .menu-toggle {
   display: none;
   width: 48px;
@@ -230,6 +307,25 @@ img {
     gap: 12px;
   }
 
+  .cases,
+  .sections,
+  .stats,
+  .projects,
+  .archive-grid,
+  .gallery-sections {
+    gap: 14px !important;
+  }
+
+  .gallery-section,
+  .case-gallery,
+  .archive-gallery,
+  .story-team,
+  .pill-row,
+  .project-actions,
+  .panel-footer {
+    gap: 12px !important;
+  }
+
   .brandbar,
   .cta {
     flex-direction: column;
@@ -297,6 +393,10 @@ img {
     overflow: auto;
   }
 
+  .sidebar-close {
+    display: inline-flex;
+  }
+
   .menu-open .sidebar {
     transform: translateX(0);
     opacity: 1;
@@ -346,6 +446,33 @@ img {
   .video-link {
     min-height: 48px;
   }
+
+  .archive-grid,
+  .archive-gallery,
+  .case-gallery {
+    grid-template-columns: 1fr !important;
+  }
+
+  .archive-thumb,
+  .gallery-card {
+    min-height: 0 !important;
+    aspect-ratio: auto !important;
+  }
+
+  .archive-thumb img,
+  .gallery-card img {
+    width: 100%;
+    height: auto !important;
+    max-height: none !important;
+    object-fit: contain !important;
+    object-position: center center !important;
+  }
+
+  .gallery-tile img {
+    width: 100%;
+    height: auto !important;
+    object-fit: contain !important;
+  }
 }
 
 @media (max-width: 520px) {
@@ -356,6 +483,25 @@ img {
   .frame,
   .main {
     gap: 10px;
+  }
+
+  .cases,
+  .sections,
+  .stats,
+  .projects,
+  .archive-grid,
+  .gallery-sections {
+    gap: 12px !important;
+  }
+
+  .gallery-section,
+  .case-gallery,
+  .archive-gallery,
+  .story-team,
+  .pill-row,
+  .project-actions,
+  .panel-footer {
+    gap: 10px !important;
   }
 
   .brandbar {
@@ -387,6 +533,18 @@ img {
   .video-link {
     width: 100%;
     justify-content: center;
+  }
+
+  .archive-thumb,
+  .gallery-card,
+  .gallery-tile {
+    border-radius: 18px;
+  }
+
+  .archive-thumb img,
+  .gallery-card img,
+  .gallery-tile img {
+    clip-path: inset(0 round 18px) !important;
   }
 
   .panel-footer,
