@@ -229,6 +229,9 @@
     .archive-card {
       padding: 24px;
       border-radius: var(--radius-xl);
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
     }
 
     .archive-card h3 {
@@ -242,17 +245,21 @@
     .archive-card p {
       color: rgba(244, 245, 247, 0.78);
       line-height: 1.68;
+      max-width: 52ch;
     }
 
     .archive-gallery {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 10px;
-      margin-top: 18px;
+      margin-top: 4px;
+      align-items: stretch;
     }
 
     .archive-thumb {
       aspect-ratio: 16 / 9;
+      min-height: 220px;
+      position: relative;
       border-radius: 18px;
       overflow: hidden;
       border: 1px solid rgba(255, 255, 255, 0.1);
@@ -265,16 +272,28 @@
         0 16px 36px rgba(0, 0, 0, 0.18);
     }
 
+    .archive-thumb::after,
+    .gallery-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+      pointer-events: none;
+    }
+
     .archive-thumb img {
       width: 100%;
       height: 100%;
       object-fit: cover;
+      object-position: center;
       display: block;
       border-radius: inherit;
       clip-path: inset(0 round 18px);
       transform-origin: center;
       backface-visibility: hidden;
       will-change: transform;
+      transition: transform 0.35s ease, opacity 0.2s ease;
       cursor: zoom-in;
     }
 
@@ -366,13 +385,20 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
+      object-position: center;
       display: block;
       border-radius: inherit;
       clip-path: inset(0 round 22px);
       transform-origin: center;
       backface-visibility: hidden;
       will-change: transform;
+      transition: transform 0.35s ease, opacity 0.2s ease;
       cursor: zoom-in;
+    }
+
+    .archive-thumb:hover img,
+    .gallery-card:hover img {
+      transform: scale(1.03);
     }
 
     .archive-thumb.portrait,
@@ -572,6 +598,10 @@
         padding: 22px;
       }
 
+      .archive-card {
+        padding: 22px;
+      }
+
       .brandbar,
       .cta {
         flex-direction: column;
@@ -606,6 +636,10 @@
         padding: 18px;
       }
 
+      .archive-card {
+        padding: 18px;
+      }
+
       .archive-gallery,
       .case-gallery {
         gap: 12px;
@@ -614,6 +648,11 @@
       .gallery-card,
       .archive-thumb {
         min-height: 220px;
+      }
+
+      .archive-card h3,
+      .case-copy h2 {
+        line-height: 1.04;
       }
     }
   </style>
@@ -646,8 +685,8 @@
             Naming and identity for a military-tech media brand with a sharp, recognisable visual system.
           </p>
           <div class="archive-gallery">
-            <div class="archive-thumb"><img src="assets/branding/6898a3044e1fc6e51ea96fa8_optimized" alt="ARSENAL UA branding visual 1" /></div>
-            <div class="archive-thumb"><img src="assets/branding/6898a3624e1fc6e51ea97151_optimized" alt="ARSENAL UA branding visual 2" /></div>
+            <div class="archive-thumb"><img src="https://res2.weblium.site/res/5d34ae48e5e18c0023d4d1c2/6898a3044e1fc6e51ea96fa8_optimized" alt="ARSENAL UA branding visual 1" loading="lazy" /></div>
+            <div class="archive-thumb"><img src="https://res2.weblium.site/res/5d34ae48e5e18c0023d4d1c2/6898a3624e1fc6e51ea97151_optimized" alt="ARSENAL UA branding visual 2" loading="lazy" /></div>
           </div>
         </article>
 
@@ -658,8 +697,8 @@
             Naming and identity for a sustainability project built around organic forms, gradients, and jungle greens.
           </p>
           <div class="archive-gallery">
-            <div class="archive-thumb"><img src="assets/branding/6813dc9687411de06997a988_optimized" alt="GECO branding visual 1" /></div>
-            <div class="archive-thumb"><img src="assets/branding/6813dc9e4442797a98adc3fe_optimized" alt="GECO branding visual 2" /></div>
+            <div class="archive-thumb"><img src="https://res2.weblium.site/res/5d34ae48e5e18c0023d4d1c2/6813dc9687411de06997a988_optimized" alt="GECO branding visual 1" loading="lazy" /></div>
+            <div class="archive-thumb"><img src="https://res2.weblium.site/res/5d34ae48e5e18c0023d4d1c2/6813dc9e4442797a98adc3fe_optimized" alt="GECO branding visual 2" loading="lazy" /></div>
           </div>
         </article>
 
@@ -670,8 +709,8 @@
             A complete identity system for AGROS across stationery, presentations, merchandise, and packaging.
           </p>
           <div class="archive-gallery">
-            <div class="archive-thumb"><img src="assets/branding/6813d40287411de069978ee5_optimized" alt="Agros branding visual 1" /></div>
-            <div class="archive-thumb"><img src="assets/branding/6813d42c492b0acf57990cfd_optimized" alt="Agros branding visual 2" /></div>
+            <div class="archive-thumb"><img src="https://res2.weblium.site/res/5d34ae48e5e18c0023d4d1c2/6813d40287411de069978ee5_optimized" alt="Agros branding visual 1" loading="lazy" /></div>
+            <div class="archive-thumb"><img src="https://res2.weblium.site/res/5d34ae48e5e18c0023d4d1c2/6813d42c492b0acf57990cfd_optimized" alt="Agros branding visual 2" loading="lazy" /></div>
           </div>
         </article>
 
@@ -682,8 +721,8 @@
             A bold identity for an investment platform built around trust, speed, and innovation.
           </p>
           <div class="archive-gallery">
-            <div class="archive-thumb"><img src="assets/branding/6813dff046207097c8f7b023_optimized" alt="Investors4you branding visual 1" /></div>
-            <div class="archive-thumb"><img src="assets/branding/6813e00b492b0acf579930b2_optimized" alt="Investors4you branding visual 2" /></div>
+            <div class="archive-thumb"><img src="https://res2.weblium.site/res/5d34ae48e5e18c0023d4d1c2/6813dff046207097c8f7b023_optimized" alt="Investors4you branding visual 1" loading="lazy" /></div>
+            <div class="archive-thumb"><img src="https://res2.weblium.site/res/5d34ae48e5e18c0023d4d1c2/6813e00b492b0acf579930b2_optimized" alt="Investors4you branding visual 2" loading="lazy" /></div>
           </div>
         </article>
 
@@ -694,8 +733,8 @@
             Event branding for an aviation conference delivered on a tight deadline.
           </p>
           <div class="archive-gallery">
-            <div class="archive-thumb"><img src="assets/branding/5dfe2969edfe8e00216ee879_optimized" alt="ADTF branding visual 1" /></div>
-            <div class="archive-thumb"><img src="assets/branding/5dfe2943871a6f00217156da_optimized" alt="ADTF branding visual 2" /></div>
+            <div class="archive-thumb"><img src="https://res2.weblium.site/res/5d34ae48e5e18c0023d4d1c2/5dfe2969edfe8e00216ee879_optimized" alt="ADTF branding visual 1" loading="lazy" /></div>
+            <div class="archive-thumb"><img src="https://res2.weblium.site/res/5d34ae48e5e18c0023d4d1c2/5dfe2943871a6f00217156da_optimized" alt="ADTF branding visual 2" loading="lazy" /></div>
           </div>
         </article>
 
@@ -706,8 +745,8 @@
             Minimal stationery design built around strong logo consistency and clean print layouts.
           </p>
           <div class="archive-gallery">
-            <div class="archive-thumb"><img src="assets/branding/5e05fc099c233c0021d8d41a_optimized" alt="Aurora Implant Center branding visual 1" /></div>
-            <div class="archive-thumb"><img src="assets/branding/5e05fd2c9c233c0021d8d735_optimized" alt="Aurora Implant Center branding visual 2" /></div>
+            <div class="archive-thumb"><img src="https://res2.weblium.site/res/5d34ae48e5e18c0023d4d1c2/5e05fc099c233c0021d8d41a_optimized" alt="Aurora Implant Center branding visual 1" loading="lazy" /></div>
+            <div class="archive-thumb"><img src="https://res2.weblium.site/res/5d34ae48e5e18c0023d4d1c2/5e05fd2c9c233c0021d8d735_optimized" alt="Aurora Implant Center branding visual 2" loading="lazy" /></div>
           </div>
         </article>
 
@@ -718,8 +757,8 @@
             Identity work for a coaching brand built around an energetic phoenix concept.
           </p>
           <div class="archive-gallery">
-            <div class="archive-thumb"><img src="assets/branding/5d3830e2db127c00238f0c1b_optimized" alt="Fly branding visual 1" /></div>
-            <div class="archive-thumb"><img src="assets/branding/5d38425bdb127c00238f724b_optimized" alt="Fly branding visual 2" /></div>
+            <div class="archive-thumb"><img src="https://res2.weblium.site/res/5d34ae48e5e18c0023d4d1c2/5d3830e2db127c00238f0c1b_optimized" alt="Fly branding visual 1" loading="lazy" /></div>
+            <div class="archive-thumb"><img src="https://res2.weblium.site/res/5d34ae48e5e18c0023d4d1c2/5d38425bdb127c00238f724b_optimized" alt="Fly branding visual 2" loading="lazy" /></div>
           </div>
         </article>
 
@@ -730,8 +769,8 @@
             A sharp, minimal identity for a commercial aluminium window company across print, vehicle, social, and web.
           </p>
           <div class="archive-gallery">
-            <div class="archive-thumb"><img src="assets/branding/5e7f11f6f89f6c002345b695_optimized" alt="Jaden branding visual 1" /></div>
-            <div class="archive-thumb"><img src="assets/branding/5e7f1336f89f6c002345b90f_optimized" alt="Jaden branding visual 2" /></div>
+            <div class="archive-thumb"><img src="https://res2.weblium.site/res/5d34ae48e5e18c0023d4d1c2/5e7f11f6f89f6c002345b695_optimized" alt="Jaden branding visual 1" loading="lazy" /></div>
+            <div class="archive-thumb"><img src="https://res2.weblium.site/res/5d34ae48e5e18c0023d4d1c2/5e7f1336f89f6c002345b90f_optimized" alt="Jaden branding visual 2" loading="lazy" /></div>
           </div>
         </article>
 
@@ -742,8 +781,8 @@
             Branding for a baby products company built around a warm and distinctive stork symbol.
           </p>
           <div class="archive-gallery">
-            <div class="archive-thumb"><img src="assets/branding/5d3843f67ce3b200230a02d9_optimized" alt="Tally Storks branding visual 1" /></div>
-            <div class="archive-thumb"><img src="assets/branding/5dfe2209edfe8e00216edbbf_optimized" alt="Tally Storks branding visual 2" /></div>
+            <div class="archive-thumb"><img src="https://res2.weblium.site/res/5d34ae48e5e18c0023d4d1c2/5d3843f67ce3b200230a02d9_optimized" alt="Tally Storks branding visual 1" loading="lazy" /></div>
+            <div class="archive-thumb"><img src="https://res2.weblium.site/res/5d34ae48e5e18c0023d4d1c2/5dfe2209edfe8e00216edbbf_optimized" alt="Tally Storks branding visual 2" loading="lazy" /></div>
           </div>
         </article>
 
@@ -754,8 +793,8 @@
             Branding support for a towel company with a clean, retail-ready presentation.
           </p>
           <div class="archive-gallery">
-            <div class="archive-thumb"><img src="assets/branding/5d43fcfb7f2c4e00232d30af_optimized" alt="Washington Towels branding visual 1" /></div>
-            <div class="archive-thumb"><img src="assets/branding/5d43fe0ec5412900236c2bd2_optimized" alt="Washington Towels branding visual 2" /></div>
+            <div class="archive-thumb"><img src="https://res2.weblium.site/res/5d34ae48e5e18c0023d4d1c2/5d43fcfb7f2c4e00232d30af_optimized" alt="Washington Towels branding visual 1" loading="lazy" /></div>
+            <div class="archive-thumb"><img src="https://res2.weblium.site/res/5d34ae48e5e18c0023d4d1c2/5d43fe0ec5412900236c2bd2_optimized" alt="Washington Towels branding visual 2" loading="lazy" /></div>
           </div>
         </article>
 
@@ -766,8 +805,8 @@
             A bold monogram identity for a sports club designed to stay recognisable across touchpoints.
           </p>
           <div class="archive-gallery">
-            <div class="archive-thumb"><img src="assets/branding/5d42c14b745f20002393d3b2_optimized" alt="Fitness Lounge branding visual 1" /></div>
-            <div class="archive-thumb"><img src="assets/branding/5d42c10dc541290023696935_optimized" alt="Fitness Lounge branding visual 2" /></div>
+            <div class="archive-thumb"><img src="https://res2.weblium.site/res/5d34ae48e5e18c0023d4d1c2/5d42c14b745f20002393d3b2_optimized" alt="Fitness Lounge branding visual 1" loading="lazy" /></div>
+            <div class="archive-thumb"><img src="https://res2.weblium.site/res/5d34ae48e5e18c0023d4d1c2/5d42c10dc541290023696935_optimized" alt="Fitness Lounge branding visual 2" loading="lazy" /></div>
           </div>
         </article>
       </section>
@@ -796,13 +835,13 @@
 
           <div class="case-gallery">
             <div class="gallery-card tall">
-              <img src="assets/branding/5d3d926d1032440024d57fd3_optimized" alt="Sear Kitchen branding visual" />
+              <img src="https://res2.weblium.site/res/5d34ae48e5e18c0023d4d1c2/5d3d926d1032440024d57fd3_optimized" alt="Sear Kitchen branding visual" loading="lazy" />
             </div>
             <div class="gallery-card">
-              <img src="assets/branding/5d3d6ea71032440024d51113_optimized" alt="Sear Kitchen secondary branding visual" />
+              <img src="https://res2.weblium.site/res/5d34ae48e5e18c0023d4d1c2/5d3d6ea71032440024d51113_optimized" alt="Sear Kitchen secondary branding visual" loading="lazy" />
             </div>
             <div class="gallery-card">
-              <img src="assets/branding/5d3d6ea71032440024d51113_optimized" alt="Sear Kitchen application detail" />
+              <img src="https://res2.weblium.site/res/5d34ae48e5e18c0023d4d1c2/5d3d6ea71032440024d51113_optimized" alt="Sear Kitchen application detail" loading="lazy" />
             </div>
           </div>
         </article>
@@ -830,16 +869,16 @@
 
           <div class="case-gallery">
             <div class="gallery-card">
-              <img src="assets/branding/5d42e0fe3cfb3c0023e8f640_optimized" alt="Jules Rose branding asset 1" />
+              <img src="https://res2.weblium.site/res/5d34ae48e5e18c0023d4d1c2/5d42e0fe3cfb3c0023e8f640_optimized" alt="Jules Rose branding asset 1" loading="lazy" />
             </div>
             <div class="gallery-card">
-              <img src="assets/branding/5d42e181632e4500244212a2_optimized" alt="Jules Rose branding asset 2" />
+              <img src="https://res2.weblium.site/res/5d34ae48e5e18c0023d4d1c2/5d42e181632e4500244212a2_optimized" alt="Jules Rose branding asset 2" loading="lazy" />
             </div>
             <div class="gallery-card">
-              <img src="assets/branding/5d42e6267f2c4e00232aa990_optimized" alt="Jules Rose branding asset 3" />
+              <img src="https://res2.weblium.site/res/5d34ae48e5e18c0023d4d1c2/5d42e6267f2c4e00232aa990_optimized" alt="Jules Rose branding asset 3" loading="lazy" />
             </div>
             <div class="gallery-card">
-              <img src="assets/branding/5d42e6b2745f200023947dd8_optimized" alt="Jules Rose branding asset 4" />
+              <img src="https://res2.weblium.site/res/5d34ae48e5e18c0023d4d1c2/5d42e6b2745f200023947dd8_optimized" alt="Jules Rose branding asset 4" loading="lazy" />
             </div>
           </div>
         </article>
@@ -867,10 +906,10 @@
 
           <div class="case-gallery">
             <div class="gallery-card">
-              <img src="assets/branding/5d3daae3cf81d1002335ec71_optimized" alt="Centaurus branding visual 1" />
+              <img src="https://res2.weblium.site/res/5d34ae48e5e18c0023d4d1c2/5d3daae3cf81d1002335ec71_optimized" alt="Centaurus branding visual 1" loading="lazy" />
             </div>
             <div class="gallery-card">
-              <img src="assets/branding/5d3dacc4287be10023d6236d_optimized" alt="Centaurus branding visual 2" />
+              <img src="https://res2.weblium.site/res/5d34ae48e5e18c0023d4d1c2/5d3dacc4287be10023d6236d_optimized" alt="Centaurus branding visual 2" loading="lazy" />
             </div>
           </div>
         </article>
@@ -898,13 +937,13 @@
 
           <div class="case-gallery">
             <div class="gallery-card">
-              <img src="assets/branding/5d3b067608932100236af6c1_optimized" alt="Ovipod branding visual 1" />
+              <img src="https://res2.weblium.site/res/5d34ae48e5e18c0023d4d1c2/5d3b067608932100236af6c1_optimized" alt="Ovipod branding visual 1" loading="lazy" />
             </div>
             <div class="gallery-card">
-              <img src="assets/branding/5d3b06737677b20023a76653_optimized" alt="Ovipod branding visual 2" />
+              <img src="https://res2.weblium.site/res/5d34ae48e5e18c0023d4d1c2/5d3b06737677b20023a76653_optimized" alt="Ovipod branding visual 2" loading="lazy" />
             </div>
             <div class="gallery-card wide">
-              <img src="assets/branding/5d3b02cd7677b20023a75690_optimized" alt="Ovipod branding visual 3" />
+              <img src="https://res2.weblium.site/res/5d34ae48e5e18c0023d4d1c2/5d3b02cd7677b20023a75690_optimized" alt="Ovipod branding visual 3" loading="lazy" />
             </div>
           </div>
         </article>
@@ -932,10 +971,10 @@
 
           <div class="case-gallery">
             <div class="gallery-card tall">
-              <img src="assets/branding/5d3af19db1b3c00024fc8740_optimized" alt="MGS branding visual 1" />
+              <img src="https://res2.weblium.site/res/5d34ae48e5e18c0023d4d1c2/5d3af19db1b3c00024fc8740_optimized" alt="MGS branding visual 1" loading="lazy" />
             </div>
             <div class="gallery-card tall">
-              <img src="assets/branding/5d3af14edc5a0100238acce8_optimized" alt="MGS branding visual 2" />
+              <img src="https://res2.weblium.site/res/5d34ae48e5e18c0023d4d1c2/5d3af14edc5a0100238acce8_optimized" alt="MGS branding visual 2" loading="lazy" />
             </div>
           </div>
         </article>
