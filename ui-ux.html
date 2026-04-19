@@ -1,0 +1,948 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Moyasta Digital — UI/UX Portfolio</title>
+  <meta
+    name="description"
+    content="UI/UX portfolio by Moyasta Digital with website, platform, and responsive interface case studies."
+  />
+  <link rel="icon" href="favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" href="android-chrome-192x192.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
+  <style>
+    :root {
+      --bg: #060708;
+      --bg-soft: #0c0f14;
+      --line: rgba(255, 255, 255, 0.09);
+      --line-strong: rgba(255, 255, 255, 0.14);
+      --text: #f4f5f7;
+      --muted: #a0a8b6;
+      --shadow: 0 28px 90px rgba(0, 0, 0, 0.34);
+      --radius-xl: 38px;
+      --radius-lg: 28px;
+      --radius-md: 20px;
+      --container: 1720px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(84, 126, 255, 0.08), transparent 24%),
+        radial-gradient(circle at 82% 10%, rgba(108, 218, 255, 0.08), transparent 18%),
+        linear-gradient(180deg, #060708 0%, #090b0f 100%);
+      color: var(--text);
+      min-height: 100vh;
+      line-height: 1.45;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    .page {
+      max-width: var(--container);
+      margin: 0 auto;
+      padding: 18px;
+    }
+
+    .frame {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 290px;
+      gap: 16px;
+      align-items: start;
+    }
+
+    .main {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      min-width: 0;
+    }
+
+    .glass {
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.025));
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: var(--shadow);
+      border-radius: var(--radius-xl);
+    }
+
+    .brandbar,
+    .overview,
+    .case-study,
+    .cta {
+      padding: 28px 30px;
+    }
+
+    .brandbar {
+      min-height: 82px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .brand-mark {
+      width: 150px;
+      display: block;
+    }
+
+    .brand-mark img {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+    }
+
+    .brand-subtitle,
+    .brand-meta,
+    .section-label,
+    .stat-label,
+    .case-kicker {
+      color: var(--muted);
+    }
+
+    .brand-subtitle,
+    .brand-meta {
+      font-size: 0.94rem;
+    }
+
+    .brand-meta {
+      text-align: right;
+    }
+
+    .pill {
+      min-width: 126px;
+      height: 52px;
+      padding: 0 22px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255, 255, 255, 0.055);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      font-weight: 600;
+      transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+    }
+
+    .pill:hover {
+      transform: translateY(-1px);
+      border-color: rgba(255, 255, 255, 0.18);
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .overview {
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+      gap: 16px;
+      align-items: start;
+    }
+
+    .overview h2 {
+      font-size: clamp(1.8rem, 3vw, 2.8rem);
+      line-height: 1.02;
+      letter-spacing: -0.05em;
+      font-weight: 500;
+      margin: 10px 0 14px;
+    }
+
+    .overview p {
+      color: rgba(244, 245, 247, 0.8);
+      line-height: 1.7;
+      max-width: 860px;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .stat {
+      padding: 18px;
+      border-radius: var(--radius-md);
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--line);
+    }
+
+    .stat-value {
+      font-size: 1.45rem;
+      letter-spacing: -0.04em;
+      margin-bottom: 8px;
+    }
+
+    .stat-label {
+      font-size: 0.86rem;
+      line-height: 1.55;
+    }
+
+    .cases {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .case-study {
+      display: grid;
+      grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+      gap: 22px;
+      align-items: start;
+    }
+
+    .case-study:nth-child(even) .case-gallery {
+      order: -1;
+    }
+
+    .case-copy {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .case-kicker {
+      font-size: 0.84rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .case-copy h2 {
+      font-size: clamp(1.7rem, 2.7vw, 3rem);
+      line-height: 1.01;
+      letter-spacing: -0.055em;
+      font-weight: 500;
+    }
+
+    .case-copy p {
+      color: rgba(244, 245, 247, 0.78);
+      line-height: 1.72;
+    }
+
+    .challenge {
+      padding: 18px 18px 20px;
+      border-radius: var(--radius-md);
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--line);
+    }
+
+    .challenge strong {
+      display: inline-block;
+      margin-bottom: 10px;
+      color: var(--text);
+    }
+
+    .case-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .case-tags span {
+      display: inline-flex;
+      align-items: center;
+      min-height: 36px;
+      padding: 0 14px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      color: rgba(244, 245, 247, 0.82);
+      font-size: 0.9rem;
+    }
+
+    .case-gallery {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      align-items: start;
+    }
+
+    .gallery-card {
+      position: relative;
+      overflow: hidden;
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      background:
+        radial-gradient(circle at 50% 22%, rgba(91, 124, 255, 0.07), transparent 38%),
+        rgba(255, 255, 255, 0.03);
+      cursor: zoom-in;
+      min-height: 240px;
+    }
+
+    .gallery-card img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: inherit;
+      clip-path: inset(0 round var(--radius-lg));
+      transform-origin: center;
+      backface-visibility: hidden;
+      will-change: transform;
+      transition: transform 0.45s ease;
+    }
+
+    .gallery-card:hover img {
+      transform: scale(1.03);
+    }
+
+    .gallery-card.portrait {
+      grid-row: span 2;
+      min-height: 520px;
+    }
+
+    .gallery-card.landscape,
+    .gallery-card.square {
+      min-height: 250px;
+    }
+
+    .case-gallery.is-single {
+      grid-template-columns: minmax(0, 1fr);
+    }
+
+    .case-gallery.is-single .gallery-card {
+      min-height: 420px;
+    }
+
+    .case-gallery.is-single .gallery-card.portrait {
+      min-height: 640px;
+    }
+
+    .cta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .cta h3 {
+      font-size: clamp(1.7rem, 3vw, 2.8rem);
+      line-height: 1;
+      letter-spacing: -0.05em;
+      font-weight: 500;
+      margin-bottom: 12px;
+    }
+
+    .cta p {
+      color: rgba(244, 245, 247, 0.78);
+      max-width: 760px;
+      line-height: 1.6;
+    }
+
+    .sidebar {
+      padding: 24px;
+      position: sticky;
+      top: 18px;
+    }
+
+    .side-title {
+      font-size: 0.92rem;
+      color: rgba(244, 245, 247, 0.58);
+      margin-bottom: 18px;
+    }
+
+    .side-nav {
+      display: grid;
+      gap: 10px;
+    }
+
+    .side-nav a {
+      padding: 12px 14px;
+      border-radius: var(--radius-md);
+      color: rgba(244, 245, 247, 0.78);
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid transparent;
+      transition: background 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
+    }
+
+    .side-nav a:hover,
+    .side-nav a.active,
+    .side-subnav a.active {
+      transform: translateX(2px);
+      background: rgba(255, 255, 255, 0.04);
+      border-color: rgba(255, 255, 255, 0.06);
+    }
+
+    .side-subnav {
+      display: grid;
+      gap: 8px;
+      margin-top: 8px;
+      padding-left: 14px;
+    }
+
+    .side-subnav a {
+      font-size: 0.96rem;
+      color: rgba(244, 245, 247, 0.66);
+      background: rgba(255, 255, 255, 0.015);
+    }
+
+    .side-foot {
+      margin-top: 18px;
+      color: rgba(244, 245, 247, 0.56);
+      line-height: 1.55;
+      font-size: 0.92rem;
+    }
+
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 32px;
+      background: rgba(4, 5, 8, 0.82);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s ease;
+      z-index: 1000;
+    }
+
+    .lightbox.is-open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .lightbox__dialog {
+      position: relative;
+      max-width: min(1200px, 100%);
+      max-height: min(90vh, 100%);
+    }
+
+    .lightbox__image {
+      display: block;
+      max-width: 100%;
+      max-height: 90vh;
+      border-radius: 24px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.45);
+    }
+
+    .lightbox__close {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      width: 40px;
+      height: 40px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      background: rgba(8, 10, 14, 0.72);
+      color: #fff;
+      font-size: 1.5rem;
+      line-height: 1;
+      cursor: pointer;
+    }
+
+    @media (max-width: 1100px) {
+      .frame {
+        grid-template-columns: 1fr;
+      }
+
+      .sidebar {
+        position: static;
+      }
+
+      .case-study {
+        grid-template-columns: 1fr;
+      }
+
+      .case-study:nth-child(even) .case-gallery {
+        order: 0;
+      }
+    }
+
+    @media (max-width: 780px) {
+      .brandbar,
+      .overview,
+      .case-study,
+      .cta {
+        padding: 22px;
+      }
+
+      .brandbar,
+      .cta {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .overview {
+        grid-template-columns: 1fr;
+      }
+
+      .stats,
+      .case-gallery {
+        grid-template-columns: 1fr;
+      }
+
+      .case-gallery.is-single .gallery-card,
+      .case-gallery .gallery-card,
+      .gallery-card.portrait {
+        min-height: 280px;
+        grid-row: auto;
+      }
+
+      .lightbox {
+        padding: 16px;
+      }
+
+      .lightbox__image {
+        max-height: 82vh;
+      }
+
+      .lightbox__close {
+        top: 10px;
+        right: 10px;
+      }
+    }
+  </style>
+  <link rel="stylesheet" href="shared.css" />
+</head>
+<body>
+  <div class="page">
+    <div class="frame">
+      <main class="main">
+        <div class="brandbar glass">
+          <div class="brand">
+            <a href="index.html#top" class="brand-mark" aria-label="Back to home">
+              <img src="Moyasta_logo_white.svg" alt="Moyasta Digital Logo" />
+            </a>
+            <div class="brand-subtitle">Brand systems, presentations, websites</div>
+          </div>
+          <div class="brand-meta">UI/UX Portfolio</div>
+        </div>
+
+        <section class="cases">
+          <article class="case-study glass">
+            <div class="case-copy">
+              <div class="case-kicker">UI/UX / Hospitality website</div>
+              <h2>Zoe, Ireland</h2>
+              <div class="challenge">
+                <strong>Challenge</strong>
+                <p>
+                  Design a warm, intuitive, fully responsive hospitality website from scratch.
+                </p>
+              </div>
+              <p>
+                A welcoming website experience with a clear user journey and smooth browsing across devices.
+              </p>
+              <p>
+                <a href="https://zoekilrush.ie" target="_blank" rel="noreferrer">zoekilrush.ie</a>
+              </p>
+              <div class="case-tags">
+                <span>Responsive website</span>
+                <span>Navigation clarity</span>
+                <span>Hospitality UX</span>
+                <span>Wireframe to interface</span>
+              </div>
+            </div>
+
+            <div class="case-gallery">
+              <div class="gallery-card">
+                <img src="assets/ui-ux/zoe-1.jpg" alt="Zoe UI/UX case study visual" />
+              </div>
+            </div>
+          </article>
+
+          <article class="case-study glass">
+            <div class="case-copy">
+              <div class="case-kicker">UI/UX / Industrial brand website</div>
+              <h2>Jaden, Australia</h2>
+              <div class="challenge">
+                <strong>Challenge</strong>
+                <p>
+                  Create a sharp, minimal website system for a commercial aluminium window manufacturer.
+                </p>
+              </div>
+              <p>
+                A restrained, technical visual language that helps the company look precise and dependable.
+              </p>
+              <p>
+                <a href="https://jaden.net.au" target="_blank" rel="noreferrer">jaden.net.au</a>
+              </p>
+              <div class="case-tags">
+                <span>Responsive website</span>
+                <span>Industrial presentation</span>
+                <span>Brand system extension</span>
+                <span>Minimal interface</span>
+              </div>
+            </div>
+
+            <div class="case-gallery">
+              <div class="gallery-card">
+                <img src="assets/ui-ux/jaden-1.jpg" alt="Jaden UI/UX case study visual 1" />
+              </div>
+              <div class="gallery-card">
+                <img src="assets/ui-ux/jaden-2.jpg" alt="Jaden UI/UX case study visual 2" />
+              </div>
+            </div>
+          </article>
+
+          <article class="case-study glass">
+            <div class="case-copy">
+              <div class="case-kicker">UI/UX / Product showcase website</div>
+              <h2>Washington Towels, United States</h2>
+              <div class="challenge">
+                <strong>Challenge</strong>
+                <p>
+                  Launch a new towel brand online with a credible identity and responsive website theme.
+                </p>
+              </div>
+              <p>
+                Branding and website work designed to make the business feel credible and ready to sell.
+              </p>
+              <p>
+                <a href="https://washingtontowels.com" target="_blank" rel="noreferrer">washingtontowels.com</a>
+              </p>
+              <div class="case-tags">
+                <span>Responsive theme</span>
+                <span>Product visibility</span>
+                <span>Brand launch</span>
+                <span>Sales-first UX</span>
+              </div>
+            </div>
+
+            <div class="case-gallery">
+              <div class="gallery-card">
+                <img src="assets/ui-ux/washington-1.jpg" alt="Washington Towels UI/UX case study visual 1" />
+              </div>
+              <div class="gallery-card">
+                <img src="assets/ui-ux/washington-2.jpg" alt="Washington Towels UI/UX case study visual 2" />
+              </div>
+            </div>
+          </article>
+
+          <article class="case-study glass">
+            <div class="case-copy">
+              <div class="case-kicker">UI/UX / Industrial technology website</div>
+              <h2>PAC Manager, Australia</h2>
+              <div class="challenge">
+                <strong>Challenge</strong>
+                <p>
+                  Position PAC Manager as an authority through a clearer, more technically credible website.
+                </p>
+              </div>
+              <p>
+                Brand and website work built to help the business attract customers and communicate expertise clearly.
+              </p>
+              <p>
+                <a href="http://pacmanager.io" target="_blank" rel="noreferrer">pacmanager.io</a>
+              </p>
+              <div class="case-tags">
+                <span>Brand launch</span>
+                <span>B2B authority</span>
+                <span>Industrial UX</span>
+                <span>Responsive website</span>
+              </div>
+            </div>
+
+            <div class="case-gallery">
+              <div class="gallery-card">
+                <img src="assets/ui-ux/pac-1.jpg" alt="PAC Manager UI/UX case study visual 1" />
+              </div>
+              <div class="gallery-card">
+                <img src="assets/ui-ux/pac-2.jpg" alt="PAC Manager UI/UX case study visual 2" />
+              </div>
+              <div class="gallery-card">
+                <img src="assets/ui-ux/pac-3.jpg" alt="PAC Manager UI/UX case study visual 3" />
+              </div>
+            </div>
+          </article>
+
+          <article class="case-study glass">
+            <div class="case-copy">
+              <div class="case-kicker">UI/UX / Electric vehicle platform</div>
+              <h2>Electro, Ukraine</h2>
+              <div class="challenge">
+                <strong>Challenge</strong>
+                <p>
+                  Build a contemporary electric-vehicle platform with clearer discovery and a modern identity.
+                </p>
+              </div>
+              <p>
+                A clean platform and brand system designed to make electric-car discovery easier.
+              </p>
+              <div class="case-tags">
+                <span>Platform UX</span>
+                <span>Automotive catalog</span>
+                <span>Brand + interface system</span>
+                <span>Information discovery</span>
+              </div>
+            </div>
+
+            <div class="case-gallery">
+              <div class="gallery-card">
+                <img src="assets/ui-ux/electro-1.jpg" alt="Electro UI/UX case study visual 1" />
+              </div>
+              <div class="gallery-card">
+                <img src="assets/ui-ux/electro-2.jpg" alt="Electro UI/UX case study visual 2" />
+              </div>
+              <div class="gallery-card">
+                <img src="assets/ui-ux/electro-3.jpg" alt="Electro UI/UX case study visual 3" />
+              </div>
+              <div class="gallery-card">
+                <img src="assets/ui-ux/electro-4.jpg" alt="Electro UI/UX case study visual 4" />
+              </div>
+            </div>
+          </article>
+
+          <article class="case-study glass">
+            <div class="case-copy">
+              <div class="case-kicker">UI/UX / Ecommerce landing platform</div>
+              <h2>Mixtura, Ukraine</h2>
+              <div class="challenge">
+                <strong>Challenge</strong>
+                <p>
+                  Make it easy for customers to build a custom vape flavor through a clear, purchase-ready flow.
+                </p>
+              </div>
+              <p>
+                A landing page and ordering flow with strong structure and low-friction product configuration.
+              </p>
+              <div class="case-tags">
+                <span>Landing page UX</span>
+                <span>Configurator flow</span>
+                <span>Clear visual structure</span>
+                <span>Fast purchase path</span>
+              </div>
+            </div>
+
+            <div class="case-gallery">
+              <div class="gallery-card">
+                <img src="assets/ui-ux/mixtura-1.jpg" alt="Mixtura UI/UX case study visual" />
+              </div>
+            </div>
+          </article>
+
+          <article class="case-study glass">
+            <div class="case-copy">
+              <div class="case-kicker">UI/UX / Studio website redesign</div>
+              <h2>Stella Digital, United States</h2>
+              <div class="challenge">
+                <strong>Challenge</strong>
+                <p>
+                  Redesign the studio website to feel more modern and sophisticated without losing brand continuity.
+                </p>
+              </div>
+              <p>
+                A refined visual system with clearer geometry and cleaner spacing.
+              </p>
+              <div class="case-tags">
+                <span>Website redesign</span>
+                <span>Modernization</span>
+                <span>Geometric interface language</span>
+                <span>Brand continuity</span>
+              </div>
+            </div>
+
+            <div class="case-gallery">
+              <div class="gallery-card">
+                <img src="assets/ui-ux/stella-1.jpg" alt="Stella Digital UI/UX case study visual 1" />
+              </div>
+              <div class="gallery-card">
+                <img src="assets/ui-ux/stella-2.jpg" alt="Stella Digital UI/UX case study visual 2" />
+              </div>
+            </div>
+          </article>
+        </section>
+
+        <section class="cta glass">
+          <div>
+            <h3>Need a website or interface that feels clearer, sharper, and more premium?</h3>
+            <p>
+              UI/UX systems that help brands look stronger and guide users more easily.
+            </p>
+          </div>
+          <a href="index.html#contact" class="pill">Contact</a>
+        </section>
+      </main>
+
+      <aside class="sidebar glass">
+        <div class="side-title">Navigation</div>
+        <nav class="side-nav">
+          <a href="index.html#top">Home</a>
+          <a href="index.html#about">About</a>
+          <a href="index.html#services">Services</a>
+          <a href="portfolio.html" class="active">Portfolio</a>
+          <div class="side-subnav">
+            <a href="branding.html">Branding</a>
+            <a href="presentations.html">Presentations</a>
+            <a href="ui-ux.html" class="active">UI / UX</a>
+            <a href="illustration.html">Illustration</a>
+            <a href="packaging.html">Packaging</a>
+          </div>
+          <a href="index.html#contact">Contact</a>
+        </nav>
+      </aside>
+    </div>
+  </div>
+
+  <div class="lightbox" id="image-lightbox" aria-hidden="true">
+    <div class="lightbox__dialog" role="dialog" aria-modal="true" aria-label="Image preview" tabindex="-1">
+      <button class="lightbox__close" type="button" aria-label="Close image preview">&times;</button>
+      <img class="lightbox__image" src="" alt="" />
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      function classifyCard(card, image) {
+        const ratio = image.naturalWidth / image.naturalHeight;
+        card.classList.remove("portrait", "landscape", "square");
+
+        if (ratio < 0.88) {
+          card.classList.add("portrait");
+        } else {
+          card.classList.add("landscape");
+        }
+      }
+
+      document.querySelectorAll(".gallery-card").forEach(function (card) {
+        const image = card.querySelector("img");
+        if (!image) {
+          return;
+        }
+
+        if (image.complete && image.naturalWidth) {
+          classifyCard(card, image);
+        } else {
+          image.addEventListener("load", function () {
+            classifyCard(card, image);
+          }, { once: true });
+        }
+      });
+
+      document.querySelectorAll(".case-gallery").forEach(function (gallery) {
+        const cards = Array.from(gallery.querySelectorAll(".gallery-card"));
+
+        if (cards.length === 1) {
+          gallery.classList.add("is-single");
+        }
+      });
+
+      const lightbox = document.getElementById("image-lightbox");
+      const dialog = lightbox.querySelector(".lightbox__dialog");
+      const preview = lightbox.querySelector(".lightbox__image");
+      const closeButton = lightbox.querySelector(".lightbox__close");
+      let previousFocus = null;
+
+      function getFocusableElements() {
+        return Array.from(
+          lightbox.querySelectorAll(
+            'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+          )
+        ).filter(function (element) {
+          return !element.hasAttribute("disabled") && element.getAttribute("aria-hidden") !== "true";
+        });
+      }
+
+      document.querySelectorAll(".gallery-card img").forEach(function (image) {
+        image.setAttribute("tabindex", "0");
+        image.setAttribute("role", "button");
+        image.setAttribute("aria-haspopup", "dialog");
+      });
+
+      function openLightbox(image) {
+        previousFocus = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+        preview.src = image.currentSrc || image.src;
+        preview.alt = image.alt || "";
+        lightbox.classList.add("is-open");
+        lightbox.setAttribute("aria-hidden", "false");
+        document.body.style.overflow = "hidden";
+        closeButton.focus();
+      }
+
+      function closeLightbox() {
+        lightbox.classList.remove("is-open");
+        lightbox.setAttribute("aria-hidden", "true");
+        preview.src = "";
+        preview.alt = "";
+        document.body.style.overflow = "";
+        if (previousFocus && previousFocus.focus) {
+          previousFocus.focus();
+        }
+        previousFocus = null;
+      }
+
+      document.addEventListener("click", function (event) {
+        const image = event.target.closest(".gallery-card img");
+        if (image) {
+          openLightbox(image);
+          return;
+        }
+
+        if (
+          lightbox.classList.contains("is-open") &&
+          (event.target === lightbox || event.target === closeButton)
+        ) {
+          closeLightbox();
+        }
+      });
+
+      document.addEventListener("keydown", function (event) {
+        const focusedImage = event.target.closest(".gallery-card img");
+        if (
+          focusedImage &&
+          (event.key === "Enter" || event.key === " ")
+        ) {
+          event.preventDefault();
+          openLightbox(focusedImage);
+          return;
+        }
+
+        if (!lightbox.classList.contains("is-open")) {
+          return;
+        }
+
+        if (event.key === "Escape") {
+          closeLightbox();
+          return;
+        }
+
+        if (event.key === "Tab") {
+          const focusable = getFocusableElements();
+          if (!focusable.length) {
+            event.preventDefault();
+            dialog.focus();
+            return;
+          }
+
+          const first = focusable[0];
+          const last = focusable[focusable.length - 1];
+
+          if (event.shiftKey && document.activeElement === first) {
+            event.preventDefault();
+            last.focus();
+          } else if (!event.shiftKey && document.activeElement === last) {
+            event.preventDefault();
+            first.focus();
+          } else if (!dialog.contains(document.activeElement)) {
+            event.preventDefault();
+            first.focus();
+          }
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
