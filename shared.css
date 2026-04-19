@@ -66,6 +66,28 @@ img {
   min-width: 0;
 }
 
+.panel-footer,
+.project-actions,
+.pill-row {
+  margin-top: 22px;
+}
+
+.case-tags + .pill-row,
+.case-tags + .project-actions,
+.case-tags + .panel-footer {
+  margin-top: 24px;
+}
+
+.section-card p + .panel-footer,
+.section-card p + .pill-row,
+.story p + .pill-row,
+.story p + .panel-footer,
+.cta p + .pill-row,
+.cta p + .panel-footer,
+.cta p + .project-actions {
+  margin-top: 24px;
+}
+
 .glass {
   background: linear-gradient(180deg, var(--panel-top), var(--panel-bottom));
   backdrop-filter: blur(18px);
@@ -303,6 +325,22 @@ img {
     gap: 12px;
   }
 
+  .panel-footer,
+  .project-actions,
+  .pill-row {
+    margin-top: 20px;
+  }
+
+  .section-card p + .panel-footer,
+  .section-card p + .pill-row,
+  .story p + .pill-row,
+  .story p + .panel-footer,
+  .cta p + .pill-row,
+  .cta p + .panel-footer,
+  .cta p + .project-actions {
+    margin-top: 22px;
+  }
+
   .pill,
   .hero-action,
   .video-link {
@@ -349,6 +387,12 @@ img {
   .video-link {
     width: 100%;
     justify-content: center;
+  }
+
+  .panel-footer,
+  .project-actions,
+  .pill-row {
+    margin-top: 18px;
   }
 
   .side-nav a,
