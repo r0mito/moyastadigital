@@ -418,6 +418,10 @@
     }
 
     @media (max-width: 780px) {
+      .page {
+        padding: 12px;
+      }
+
       .brandbar,
       .overview,
       .gallery-section,
@@ -456,6 +460,26 @@
         top: 10px;
         right: 10px;
       }
+
+      .gallery-section {
+        gap: 18px;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .brandbar,
+      .gallery-section,
+      .cta {
+        padding: 18px;
+      }
+
+      .gallery-grid {
+        column-gap: 12px;
+      }
+
+      .gallery-tile {
+        margin-bottom: 12px;
+      }
     }
   </style>
   <link rel="stylesheet" href="shared.css" />
@@ -471,6 +495,11 @@
             </a>
             <div class="brand-subtitle">Brand systems, presentations, websites</div>
           </div>
+          <button class="menu-toggle" type="button" aria-label="Open navigation menu" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
           <div class="brand-meta">Packaging Portfolio</div>
         </div>
 
@@ -542,6 +571,29 @@
   </div>
 
   <script>
+    const menuToggle = document.querySelector(".menu-toggle");
+    const sidebar = document.querySelector(".sidebar");
+
+    if (menuToggle && sidebar) {
+      const closeMenu = () => {
+        document.body.classList.remove("menu-open");
+        menuToggle.setAttribute("aria-expanded", "false");
+      };
+
+      menuToggle.addEventListener("click", () => {
+        const open = document.body.classList.toggle("menu-open");
+        menuToggle.setAttribute("aria-expanded", open ? "true" : "false");
+      });
+
+      sidebar.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", closeMenu);
+      });
+
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") closeMenu();
+      });
+    }
+
     (function () {
       const lightbox = document.getElementById("lightbox");
       const lightboxImage = document.getElementById("lightbox-image");

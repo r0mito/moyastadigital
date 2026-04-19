@@ -445,6 +445,60 @@
       .project-details {
         grid-template-columns: 1fr;
       }
+
+      .project-meta {
+        flex-wrap: wrap;
+        align-items: flex-start;
+        gap: 10px;
+      }
+
+      .project-title-art {
+        min-height: 56px;
+        margin-bottom: 16px;
+      }
+
+      .project-title-art img {
+        max-height: 56px;
+      }
+
+      .project-card {
+        min-height: auto;
+      }
+
+      .project-card p {
+        margin-bottom: 20px;
+      }
+
+      .project-actions,
+      .pill-row {
+        width: 100%;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .project-card,
+      .cta-card,
+      .sidebar {
+        padding-left: 18px;
+        padding-right: 18px;
+      }
+
+      .project-tag,
+      .project-year {
+        font-size: 0.84rem;
+      }
+
+      .project-title-art {
+        min-height: 48px;
+      }
+
+      .project-title-art img {
+        max-height: 48px;
+      }
+
+      .pill {
+        width: 100%;
+      }
     }
   </style>
   <link rel="stylesheet" href="shared.css" />
@@ -460,6 +514,11 @@
             </a>
             <div class="brand-subtitle">Brand systems, presentations, websites</div>
           </div>
+          <button class="menu-toggle" type="button" aria-label="Open navigation menu" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
           <div class="brand-meta">Selected studio work</div>
         </div>
 
@@ -652,5 +711,29 @@
       </aside>
     </div>
   </div>
+  <script>
+    const menuToggle = document.querySelector(".menu-toggle");
+    const sidebar = document.querySelector(".sidebar");
+
+    if (menuToggle && sidebar) {
+      const closeMenu = () => {
+        document.body.classList.remove("menu-open");
+        menuToggle.setAttribute("aria-expanded", "false");
+      };
+
+      menuToggle.addEventListener("click", () => {
+        const open = document.body.classList.toggle("menu-open");
+        menuToggle.setAttribute("aria-expanded", open ? "true" : "false");
+      });
+
+      sidebar.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", closeMenu);
+      });
+
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") closeMenu();
+      });
+    }
+  </script>
 </body>
 </html>

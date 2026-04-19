@@ -131,6 +131,43 @@ img {
   font-weight: 600;
 }
 
+.menu-toggle {
+  display: none;
+  width: 48px;
+  height: 48px;
+  padding: 0;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--text);
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 4px;
+  flex: 0 0 auto;
+}
+
+.menu-toggle span {
+  width: 18px;
+  height: 2px;
+  border-radius: 999px;
+  background: currentColor;
+  transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+.menu-open .menu-toggle span:nth-child(1) {
+  transform: translateY(6px) rotate(45deg);
+}
+
+.menu-open .menu-toggle span:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-open .menu-toggle span:nth-child(3) {
+  transform: translateY(-6px) rotate(-45deg);
+}
+
 @media (max-width: 1100px) {
   .frame {
     grid-template-columns: 1fr;
@@ -142,9 +179,109 @@ img {
 }
 
 @media (max-width: 780px) {
+  body.menu-open {
+    overflow: hidden;
+  }
+
+  body.menu-open::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: rgba(5, 8, 12, 0.6);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    z-index: 40;
+  }
+
+  .page {
+    padding: 12px;
+  }
+
+  .frame,
+  .main {
+    gap: 12px;
+  }
+
   .brandbar,
   .cta {
     flex-direction: column;
     align-items: flex-start;
+  }
+
+  .brandbar,
+  .sidebar,
+  .cta,
+  .project-card,
+  .section-card,
+  .case-study,
+  .case-card,
+  .gallery-section,
+  .overview,
+  .story,
+  .feature,
+  .hero-surface,
+  .stat-card {
+    border-radius: 24px;
+  }
+
+  .brandbar {
+    min-height: auto;
+    padding: 18px 20px;
+    gap: 10px;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .brand {
+    width: auto;
+    flex: 1;
+    min-width: 0;
+  }
+
+  .brand-mark {
+    width: 124px;
+  }
+
+  .brand-subtitle,
+  .brand-meta {
+    display: none;
+  }
+
+  .menu-toggle {
+    display: inline-flex;
+    z-index: 60;
+  }
+
+  .sidebar {
+    position: fixed;
+    top: 12px;
+    right: 12px;
+    bottom: 12px;
+    width: min(320px, calc(100vw - 24px));
+    padding: 18px;
+    z-index: 50;
+    transform: translateX(calc(100% + 18px));
+    opacity: 0;
+    pointer-events: none;
+    transition: transform 0.3s ease, opacity 0.25s ease;
+    overflow: auto;
+  }
+
+  .menu-open .sidebar {
+    transform: translateX(0);
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .side-nav,
+  .side-subnav {
+    grid-template-columns: 1fr;
+  }
+
+  .side-nav a,
+  .side-subnav a {
+    min-height: 48px;
+    padding: 12px 14px;
   }
 }

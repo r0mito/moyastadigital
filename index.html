@@ -1002,8 +1002,18 @@
         padding: 24px 22px 24px;
       }
 
+      .hero,
+      .hero-surface,
+      .hero-content {
+        min-height: 0;
+      }
+
+      .hero-bottom {
+        gap: 18px;
+      }
+
       .hero-copy h1 {
-        font-size: 2.9rem;
+        font-size: 2.55rem;
         line-height: 0.97;
       }
 
@@ -1014,11 +1024,13 @@
 
       .hero-copy p {
         margin-top: 18px;
+        max-width: 34ch;
       }
 
       .hero-panel {
-        padding: 22px;
+        padding: 18px;
         border-radius: 22px;
+        min-height: 240px;
       }
 
       .panel-title {
@@ -1050,22 +1062,50 @@
         align-items: flex-start;
       }
 
+      .story-intro {
+        margin-bottom: 12px;
+      }
+
       .side-nav {
         grid-template-columns: 1fr 1fr;
       }
     }
 
     @media (max-width: 520px) {
+      .hero-content {
+        padding: 20px 18px 20px;
+      }
+
+      .hero-copy h1 {
+        font-size: 2.15rem;
+      }
+
+      .hero-copy p {
+        font-size: 0.98rem;
+      }
+
       .side-nav {
         grid-template-columns: 1fr;
       }
 
       .hero-action {
-        min-width: 44px;
-        height: 44px;
+        min-width: 0;
+        width: 100%;
+        height: 46px;
         padding: 0 16px;
       }
 
+      .hero-panel {
+        min-height: 210px;
+      }
+
+      .panel-logo-wrap {
+        width: min(100%, 240px);
+      }
+
+      .story-team {
+        gap: 8px;
+      }
     }
 
     @media (hover: none), (pointer: coarse) {
@@ -1115,6 +1155,11 @@
                 <div class="brand-subtitle">Brand systems, presentations, websites</div>
               </div>
             </div>
+            <button class="menu-toggle" type="button" aria-label="Open navigation menu" aria-expanded="false">
+              <span></span>
+              <span></span>
+              <span></span>
+            </button>
             <div class="brand-meta">Independent design studio</div>
           </div>
         </div>
@@ -1249,9 +1294,31 @@
   </div>
 
   <script>
+    const menuToggle = document.querySelector(".menu-toggle");
+    const sidebar = document.querySelector(".sidebar");
     const links = document.querySelectorAll(".side-nav a");
     const anchors = document.querySelectorAll(".anchor");
     const heroSurface = document.querySelector(".hero-surface");
+
+    if (menuToggle && sidebar) {
+      const closeMenu = () => {
+        document.body.classList.remove("menu-open");
+        menuToggle.setAttribute("aria-expanded", "false");
+      };
+
+      menuToggle.addEventListener("click", () => {
+        const open = document.body.classList.toggle("menu-open");
+        menuToggle.setAttribute("aria-expanded", open ? "true" : "false");
+      });
+
+      sidebar.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", closeMenu);
+      });
+
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") closeMenu();
+      });
+    }
 
     const observer = new IntersectionObserver(
       (entries) => {

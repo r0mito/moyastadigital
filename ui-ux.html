@@ -473,6 +473,10 @@
     }
 
     @media (max-width: 780px) {
+      .page {
+        padding: 12px;
+      }
+
       .brandbar,
       .overview,
       .case-study,
@@ -514,6 +518,27 @@
         top: 10px;
         right: 10px;
       }
+
+      .overview,
+      .case-study,
+      .cta {
+        gap: 18px;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .brandbar,
+      .overview,
+      .case-study,
+      .cta {
+        padding: 18px;
+      }
+
+      .case-gallery.is-single .gallery-card,
+      .case-gallery .gallery-card,
+      .gallery-card.portrait {
+        min-height: 220px;
+      }
     }
   </style>
   <link rel="stylesheet" href="shared.css" />
@@ -529,6 +554,11 @@
             </a>
             <div class="brand-subtitle">Brand systems, presentations, websites</div>
           </div>
+          <button class="menu-toggle" type="button" aria-label="Open navigation menu" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
           <div class="brand-meta">UI/UX Portfolio</div>
         </div>
 
@@ -805,6 +835,29 @@
   </div>
 
   <script>
+    const menuToggle = document.querySelector(".menu-toggle");
+    const sidebar = document.querySelector(".sidebar");
+
+    if (menuToggle && sidebar) {
+      const closeMenu = () => {
+        document.body.classList.remove("menu-open");
+        menuToggle.setAttribute("aria-expanded", "false");
+      };
+
+      menuToggle.addEventListener("click", () => {
+        const open = document.body.classList.toggle("menu-open");
+        menuToggle.setAttribute("aria-expanded", open ? "true" : "false");
+      });
+
+      sidebar.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", closeMenu);
+      });
+
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") closeMenu();
+      });
+    }
+
     (function () {
       function classifyCard(card, image) {
         const ratio = image.naturalWidth / image.naturalHeight;
