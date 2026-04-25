@@ -248,6 +248,30 @@
       max-width: 52ch;
     }
 
+    .archive-link {
+      align-self: flex-start;
+      padding: 10px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(255, 255, 255, 0.045);
+      color: rgba(244, 245, 247, 0.9);
+      text-decoration: none;
+      font-size: 0.92rem;
+      line-height: 1;
+      transition:
+        border-color 160ms ease,
+        background 160ms ease,
+        color 160ms ease,
+        transform 160ms ease;
+    }
+
+    .archive-link:hover {
+      border-color: rgba(132, 167, 255, 0.32);
+      background: rgba(91, 124, 255, 0.12);
+      color: var(--text);
+      transform: translateY(-1px);
+    }
+
     .archive-gallery {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -684,6 +708,7 @@
           <p>
             Naming and identity for a military-tech media brand with a sharp, recognisable visual system.
           </p>
+          <a class="archive-link" href="https://www.youtube.com/@ARSENAL-UA" target="_blank" rel="noreferrer">Visit YouTube channel</a>
           <div class="archive-gallery">
             <div class="archive-thumb"><img src="https://res2.weblium.site/res/5d34ae48e5e18c0023d4d1c2/6898a3044e1fc6e51ea96fa8_optimized" alt="ARSENAL UA branding visual 1" loading="lazy" /></div>
             <div class="archive-thumb"><img src="https://res2.weblium.site/res/5d34ae48e5e18c0023d4d1c2/6898a3624e1fc6e51ea97151_optimized" alt="ARSENAL UA branding visual 2" loading="lazy" /></div>
