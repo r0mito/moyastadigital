@@ -254,6 +254,33 @@
       color: var(--text);
     }
 
+    .case-link {
+      align-self: flex-start;
+      display: inline-flex;
+      align-items: center;
+      min-height: 40px;
+      padding: 0 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(255, 255, 255, 0.045);
+      color: rgba(244, 245, 247, 0.9);
+      text-decoration: none;
+      font-size: 0.92rem;
+      line-height: 1;
+      transition:
+        border-color 160ms ease,
+        background 160ms ease,
+        color 160ms ease,
+        transform 160ms ease;
+    }
+
+    .case-link:hover {
+      border-color: rgba(132, 167, 255, 0.32);
+      background: rgba(91, 124, 255, 0.12);
+      color: var(--text);
+      transform: translateY(-1px);
+    }
+
     .case-tags {
       display: flex;
       flex-wrap: wrap;
@@ -565,6 +592,35 @@
         <section class="cases">
           <article class="case-study glass">
             <div class="case-copy">
+              <div class="case-kicker">UI/UX / Crypto timeline website</div>
+              <h2>Permuto Countdown</h2>
+              <div class="challenge">
+                <strong>Challenge</strong>
+                <p>
+                  Turn complex SEC and trust milestone information into a simple public-facing timeline that feels clear, current, and easy to scan.
+                </p>
+              </div>
+              <p>
+                A dark, focused countdown website built around key dates, status markers, and timeline notes, making dense market information feel structured and accessible at a glance.
+              </p>
+              <a class="case-link" href="https://permutocountdown.xyz" target="_blank" rel="noreferrer">Visit website</a>
+              <div class="case-tags">
+                <span>Timeline interface</span>
+                <span>Countdown UX</span>
+                <span>Crypto information design</span>
+                <span>Dark UI system</span>
+              </div>
+            </div>
+
+            <div class="case-gallery is-single">
+              <div class="gallery-card landscape">
+                <img src="assets/ui-ux/permuto.jpg" alt="Permuto Countdown UI/UX case study visual" loading="lazy" />
+              </div>
+            </div>
+          </article>
+
+          <article class="case-study glass">
+            <div class="case-copy">
               <div class="case-kicker">UI/UX / Hospitality website</div>
               <h2>Zoe, Ireland</h2>
               <div class="challenge">
@@ -576,9 +632,7 @@
               <p>
                 A welcoming website experience with a clear user journey and smooth browsing across devices.
               </p>
-              <p>
-                <a href="https://zoekilrush.ie" target="_blank" rel="noreferrer">zoekilrush.ie</a>
-              </p>
+              <a class="case-link" href="https://zoekilrush.ie" target="_blank" rel="noreferrer">Visit website</a>
               <div class="case-tags">
                 <span>Responsive website</span>
                 <span>Navigation clarity</span>
@@ -607,9 +661,7 @@
               <p>
                 A restrained, technical visual language that helps the company look precise and dependable.
               </p>
-              <p>
-                <a href="https://jaden.net.au" target="_blank" rel="noreferrer">jaden.net.au</a>
-              </p>
+              <a class="case-link" href="https://jaden.net.au" target="_blank" rel="noreferrer">Visit website</a>
               <div class="case-tags">
                 <span>Responsive website</span>
                 <span>Industrial presentation</span>
@@ -641,9 +693,7 @@
               <p>
                 Branding and website work designed to make the business feel credible and ready to sell.
               </p>
-              <p>
-                <a href="https://washingtontowels.com" target="_blank" rel="noreferrer">washingtontowels.com</a>
-              </p>
+              <a class="case-link" href="https://washingtontowels.com" target="_blank" rel="noreferrer">Visit website</a>
               <div class="case-tags">
                 <span>Responsive theme</span>
                 <span>Product visibility</span>
@@ -675,9 +725,7 @@
               <p>
                 Brand and website work built to help the business attract customers and communicate expertise clearly.
               </p>
-              <p>
-                <a href="http://pacmanager.io" target="_blank" rel="noreferrer">pacmanager.io</a>
-              </p>
+              <a class="case-link" href="http://pacmanager.io" target="_blank" rel="noreferrer">Visit website</a>
               <div class="case-tags">
                 <span>Brand launch</span>
                 <span>B2B authority</span>
@@ -764,36 +812,6 @@
             </div>
           </article>
 
-          <article class="case-study glass">
-            <div class="case-copy">
-              <div class="case-kicker">UI/UX / Studio website redesign</div>
-              <h2>Stella Digital, United States</h2>
-              <div class="challenge">
-                <strong>Challenge</strong>
-                <p>
-                  Redesign the studio website to feel more modern and sophisticated without losing brand continuity.
-                </p>
-              </div>
-              <p>
-                A refined visual system with clearer geometry and cleaner spacing.
-              </p>
-              <div class="case-tags">
-                <span>Website redesign</span>
-                <span>Modernization</span>
-                <span>Geometric interface language</span>
-                <span>Brand continuity</span>
-              </div>
-            </div>
-
-            <div class="case-gallery">
-              <div class="gallery-card">
-                <img src="assets/ui-ux/stella-1.jpg" alt="Stella Digital UI/UX case study visual 1" />
-              </div>
-              <div class="gallery-card">
-                <img src="assets/ui-ux/stella-2.jpg" alt="Stella Digital UI/UX case study visual 2" />
-              </div>
-            </div>
-          </article>
         </section>
 
         <section class="cta glass">
